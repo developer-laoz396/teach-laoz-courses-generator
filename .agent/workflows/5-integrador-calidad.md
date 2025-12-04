@@ -195,36 +195,36 @@ Acción: Re-distribuir contenido
 
 ### FASE 5: NAVEGACIÓN E INDEXADO
 
-#### 5.1 Generación de MENU.md
+#### 5.1 Generación de INDICE.md
+Debes generar un archivo `INDICE.md` en la raíz del curso que sirva como mapa completo.
 
-Debes generar un archivo `MENU.md` en la raíz del curso que sirva como índice central de navegación.
-
-**Estructura del MENU.md**:
+**Estructura del INDICE.md**:
 ```markdown
 # ÍNDICE DEL CURSO: [NOMBRE DEL CURSO]
 
 ## 🏁 Inicio
 - [Plan Curricular](plan_curricular.md)
-- [Curso Completo (Documento Maestro)](CURSO_COMPLETO.md)
+- [Curso Completo](CURSO_COMPLETO.md)
 
-## 📚 Módulos
+## 📚 Contenido Detallado
 
 ### Módulo 1: [Nombre]
-- 📘 [Contenido](modulos/modulo_1_contenido.md)
-- 🎧 [Guión de Audio](guiones/modulo_1_guion.md)
-- 🎮 [Ejercicios](ejercicios/modulo_1_ejercicios.md)
+#### Tema 1.1: [Nombre]
+- 📘 [Subtema 1.1.1: Nombre](modulos/modulo_1/tema_1.1_subtema_1.1.1_contenido.md)
+  - 🎧 [Audio](modulos/modulo_1/tema_1.1_subtema_1.1.1_guion.md)
+  - 🎮 [Ejercicios](modulos/modulo_1/tema_1.1_subtema_1.1.1_ejercicios.md)
 
-### Módulo 2: [Nombre]
+#### Tema 1.2: [Nombre]
 ...
 ```
 
 #### 5.2 Inyección de Navegación
 
-Para cada archivo de contenido (`modulos/modulo_X_contenido.md`), debes agregar al final un pie de página de navegación con el siguiente formato:
+Para cada archivo de contenido (`modulos/modulo_X/tema_Y_subtema_Z_contenido.md`), agrega al final:
 
 ```markdown
 ---
-⬅️ **Anterior**: [Módulo X-1](modulo_X-1_contenido.md) | 🏠 [Menú Principal](../MENU.md) | ➡️ **Siguiente**: [Módulo X+1](modulo_X+1_contenido.md)
+⬅️ **Anterior**: [Subtema Anterior](...) | 🏠 [Índice](../../INDICE.md) | ➡️ **Siguiente**: [Subtema Siguiente](...)
 ```
 
 **Reglas**:

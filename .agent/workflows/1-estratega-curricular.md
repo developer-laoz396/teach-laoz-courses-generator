@@ -136,32 +136,21 @@ Definir checkpoints críticos:
 
 **Duración**: [X horas]
 **Objetivo**: [Objetivo medible del módulo]
-**Dependencias**: [Módulo previo requerido]
 
-#### Conceptos nucleares
+#### TEMA 1.1: [Nombre del Tema]
 
-1. **Concepto 1.1**: [Nombre]
+**Objetivo del Tema**: [Objetivo específico]
 
-   - Nivel Bloom: [Nivel esperado]
-   - Dificultad: [Baja/Media/Alta]
-   - Requiere código: [Sí/No]
-   - Requiere visualización: [Sí/No]
-   - Tiempo estimado: [minutos]
+- **Subtema 1.1.1**: [Nombre del Subtema Atómico]
+  - Objetivo: [Verbo Bloom + qué]
+  - Tipo: [Teoría/Práctica]
+  - Requiere Código: [Sí/No]
 
-2. **Concepto 1.2**: [Nombre]
-   [...]
+- **Subtema 1.1.2**: [Nombre del Subtema Atómico]
+  [...]
 
-#### Diferenciación por rutas
-
-**Básica**: [Descripción de enfoque]
-**Intermedia**: [Ajustes específicos]
-**Avanzada**: [Ajustes específicos]
-
-#### Punto de evaluación
-
-- Tipo: [Formativa/Sumativa]
-- Formato: [Cuestionario/Ejercicio práctico/Proyecto]
-- Criterio de avance: [% mínimo de dominio]
+#### TEMA 1.2: [Nombre del Tema]
+[...]
 
 ---
 
@@ -276,7 +265,30 @@ PRERREQUISITOS: Estructuras de datos, análisis de complejidad, grafos básicos 
 ---
 
 ## INICIO DE EJECUCIÓN
+Cuando el usuario te proporcione un tema, responde ÚNICAMENTE con el documento de arquitectura curricular completo.
 
-Cuando el usuario te proporcione un tema, responde ÚNICAMENTE con el documento de arquitectura curricular completo. No pidas confirmaciones intermedias, no expliques tu proceso. Solo entrega el output especificado.
+**IMPORTANTE**: Al final del documento, DEBES incluir un bloque de código JSON con la estructura del árbol curricular para ser procesado por el Manager. El formato debe ser:
 
-Si el input del usuario es incompleto, solicita EXACTAMENTE los campos faltantes del formato INPUT ESPERADO.
+```json
+[
+  {
+    "modulo_id": 0,
+    "titulo": "Nombre Módulo",
+    "temas": [
+      {
+        "tema_id": "0.1",
+        "titulo": "Nombre Tema",
+        "subtemas": [
+          {
+            "subtema_id": "0.1.1",
+            "titulo": "Nombre Subtema"
+          },
+          ...
+        ]
+      },
+      ...
+    ]
+  },
+  ...
+]
+```

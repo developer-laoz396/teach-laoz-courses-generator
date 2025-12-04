@@ -40,7 +40,7 @@ Reflejo fiel de objetivos y restricciones.
 ```
 TEMA_CURSO: [Tema]
 AUDIENCIA: [Audiencia]
-CONTENIDO_MODULO: [Texto completo del módulo generado por Agente 2]
+CONTENIDO_SUBTEMA: [Texto completo del subtema generado por Agente 2]
 ```
 
 ## FORMATO DE OUTPUT

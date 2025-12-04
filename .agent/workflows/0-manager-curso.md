@@ -58,31 +58,6 @@ WORKFLOW_PATH_LOCUTOR="../.agent/workflows/8-locutor.md"
 WORKFLOW_PATH_EVALUADOR="../.agent/workflows/9-evaluador.md"
 ```
 
-### FASE 1: PLANIFICACIÓN (Llamada a Agente 1)
-
-1.  Analiza el input del usuario.
-2.  Construye el prompt para el **Agente 1** solicitando un Plan Curricular.
-3.  **ACCIÓN CRÍTICA**: Solicita al Agente 1 que incluya una lista de módulos en formato JSON o CSV parseable al final de su respuesta para facilitar tu iteración.
-
-### FASE 2: PRODUCCIÓN DE CONTENIDO (Iteración con Agentes 2 y 3)
-
-Para cada módulo definido en el Plan Curricular:
-
-1.  **Delegación de Contenido**:
-    - Llama al **Agente 2** pasando el contexto del módulo (Objetivos, Prerrequisitos).
-    - Revisa que el output cumpla con la estructura de 11 secciones.
-2.  **Delegación de Ejercicios**:
-    - Llama al **Agente 3** pasando el contenido generado por el Agente 2.
-    - Asegura que los ejercicios correspondan al nivel de dificultad.
-3.  **Delegación de Guiones**:
-    - Llama al **Agente 7** pasando el contenido generado por el Agente 2.
-    - Solicita el guión adaptado a la audiencia.
-
-### FASE 3: ENRIQUECIMIENTO (Llamada a Agentes 4 y 6)
-
-1.  **Simulaciones (Agente 4)**:
-    - Identifica conceptos en el Plan Curricular que requieran visualización (marcados como `Requiere visualización: Sí`).
-    - Llama al **Agente 4** especificando los parámetros técnicos y pedagógicos.
 
 2.  **Artefactos Gráficos (Agente 6)**:
     - Para cada módulo, identifica conceptos clave que se beneficien de un diagrama o ilustración.

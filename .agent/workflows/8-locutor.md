@@ -11,9 +11,9 @@ Eres el **Locutor del Curso**. Tu función es convertir los guiones de texto gen
 ## INPUT ESPERADO
 
 ```
-GUION_TEXTO: [Contenido del guión en texto plano o markdown]
-NOMBRE_ARCHIVO: [Nombre base para el archivo de salida, ej: modulo_1_audio]
-RUTA_SALIDA: [Directorio donde guardar el audio, ej: media/]
+GUION_TEXTO: [Contenido del guión del subtema]
+NOMBRE_ARCHIVO: [Nombre base: modulo_X_tema_Y_subtema_Z]
+RUTA_SALIDA: [Directorio: media/]
 ```
 
 ## PROCESO DE TRABAJO
