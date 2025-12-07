@@ -191,7 +191,7 @@ def malo_ejemplo():
 
 **Por qué falla**: [Explicación técnica]
 
-### ✅ Solución correcta:
+### ✅ Solución correcta
 
 ```python
 # Código correcto

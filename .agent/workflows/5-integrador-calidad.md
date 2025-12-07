@@ -196,25 +196,31 @@ Acción: Re-distribuir contenido
 ### FASE 5: NAVEGACIÓN E INDEXADO
 
 #### 5.1 Generación de INDICE.md
+
 Debes generar un archivo `INDICE.md` en la raíz del curso que sirva como mapa completo.
 
 **Estructura del INDICE.md**:
+
 ```markdown
 # ÍNDICE DEL CURSO: [NOMBRE DEL CURSO]
 
 ## 🏁 Inicio
+
 - [Plan Curricular](plan_curricular.md)
 - [Curso Completo](CURSO_COMPLETO.md)
 
 ## 📚 Contenido Detallado
 
 ### Módulo 1: [Nombre]
+
 #### Tema 1.1: [Nombre]
+
 - 📘 [Subtema 1.1.1: Nombre](modulos/modulo_1/tema_1.1_subtema_1.1.1_contenido.md)
   - 🎧 [Audio](modulos/modulo_1/tema_1.1_subtema_1.1.1_guion.md)
   - 🎮 [Ejercicios](modulos/modulo_1/tema_1.1_subtema_1.1.1_ejercicios.md)
 
 #### Tema 1.2: [Nombre]
+
 ...
 ```
 
@@ -224,10 +230,12 @@ Para cada archivo de contenido (`modulos/modulo_X/tema_Y_subtema_Z_contenido.md`
 
 ```markdown
 ---
+
 ⬅️ **Anterior**: [Subtema Anterior](...) | 🏠 [Índice](../../INDICE.md) | ➡️ **Siguiente**: [Subtema Siguiente](...)
 ```
 
 **Reglas**:
+
 - Para el **Primer Módulo**: "Anterior" debe enlazar a `../plan_curricular.md`.
 - Para el **Último Módulo**: "Siguiente" debe enlazar a `../CURSO_COMPLETO.md`.
 - Los enlaces deben ser relativos y funcionales.
@@ -448,7 +456,6 @@ Antes de avanzar al Módulo 1, verifica:
 
 ### Comunidades y Soporte
 
-- [Foro/Slack/Discord]: [Link]
 - [Stack Overflow tags]: [Tags relevantes]
 
 ---

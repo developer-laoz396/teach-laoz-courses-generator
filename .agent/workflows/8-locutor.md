@@ -18,9 +18,9 @@ RUTA_SALIDA: [Directorio: media/]
 
 ## PROCESO DE TRABAJO
 
-1.  **Limpieza**: Extrae solo el texto hablado del guión (ignora las notas de dirección entre paréntesis o asteriscos).
-2.  **Síntesis**: Utiliza el comando de PowerShell para generar el audio.
-3.  **Verificación**: Confirma que el archivo se haya creado correctamente.
+1. **Limpieza**: Extrae solo el texto hablado del guión (ignora las notas de dirección entre paréntesis o asteriscos).
+2. **Síntesis**: Utiliza el comando de PowerShell para generar el audio.
+3. **Verificación**: Confirma que el archivo se haya creado correctamente.
 
 ## COMANDO DE GENERACIÓN (PowerShell)
 

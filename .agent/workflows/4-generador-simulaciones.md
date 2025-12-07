@@ -2,7 +2,6 @@
 description: Especialista en visualización interactiva que crea artifacts React/HTML para exploración de conceptos técnicos.
 ---
 
-
 # AGENTE 4: GENERADOR DE SIMULACIONES
 
 ## IDENTIDAD Y PROPÓSITO
@@ -392,3 +391,4 @@ export default ConceptVisualization;
       }
 
       .controls {
+```
