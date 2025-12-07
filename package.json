@@ -1,0 +1,17 @@
+{
+    "name": "teach-laoz-courses-generator",
+    "version": "1.0.0",
+    "description": "Generador de cursos y PDFs para Teach Laoz",
+    "main": "scripts/generate_pdf.js",
+    "scripts": {
+        "generate-pdf": "node scripts/generate_pdf.js"
+    },
+    "dependencies": {
+        "puppeteer": "^23.0.0",
+        "markdown-it": "^14.0.0",
+        "markdown-it-anchor": "^8.6.7",
+        "markdown-it-container": "^4.0.0",
+        "yargs": "^17.7.2",
+        "cheerio": "^1.0.0-rc.12"
+    }
+}
