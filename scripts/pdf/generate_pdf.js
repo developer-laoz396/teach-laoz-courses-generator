@@ -197,7 +197,7 @@ async function main() {
     }
 
     // CSS
-    const cssContent = fs.readFileSync(path.resolve(__dirname, '../templates/styles.css'), 'utf-8');
+    const cssContent = fs.readFileSync(path.resolve(__dirname, '../../templates/styles.css'), 'utf-8');
 
     // Plantilla Final
     const fullHTML = `
@@ -236,7 +236,7 @@ async function main() {
     <body>
         <div class="cover-page">
             <div class="logo-container">
-                <img src="file://${path.resolve(__dirname, '../templates/logo.svg')}" class="logo">
+                <img src="file://${path.resolve(__dirname, '../../templates/logo.svg')}" class="logo">
             </div>
             <h1 class="main-title">${courseTitle}</h1>
             <p class="subtitle">Manual del Estudiante</p>

@@ -73,9 +73,11 @@ graph TB
 ## 🤖 CATÁLOGO DE AGENTES
 
 ### Agente 0: Manager del Curso 🎯
+
 **Rol**: Director de Producción Educativa  
 **Responsabilidad**: Orquestador principal del sistema
 **Funciones**:
+
 - Validar y configurar parámetros del curso
 - Crear estructura de directorios
 - Coordinar llamadas secuenciales a agentes especializados
@@ -88,9 +90,11 @@ graph TB
 ---
 
 ### Agente 1: Estratega Curricular 📋
+
 **Responsabilidad**: Arquitectura del curso
 
 **Funciones**:
+
 - Análisis del tema y audiencia
 - Diseño de arquitectura curricular completa
 - Creación de 3 rutas de aprendizaje (Básica/Intermedia/Avanzada)
@@ -99,7 +103,8 @@ graph TB
 - Estimación temporal realista
 
 **Inputs**: Tema, audiencia, complejidad, duración  
-**Outputs**: 
+**Outputs**:
+
 - `plan_curricular.md` (2000-3000 palabras)
 - `estructura_curso.json` (estructura parseable)
 - `mapa_dependencias.mermaid` (diagrama)
@@ -107,9 +112,11 @@ graph TB
 ---
 
 ### Agente 2: Sintetizador de Contenido 📝
+
 **Responsabilidad**: Generación de contenido teórico-práctico
 
 **Funciones**:
+
 - Redacción de material denso y técnico
 - Progresión pedagógica: Intuitivo → Formal → Aplicado
 - Generación de código ejecutable con tests
@@ -120,6 +127,7 @@ graph TB
 **Outputs**: `modulo_X/tema_Y_subtema_Z_contenido.md` (2500-3000 palabras)
 
 **Estructura del Contenido**:
+
 1. Contexto y motivación
 2. Fundamentos teóricos
 3. Implementación práctica
@@ -135,9 +143,11 @@ graph TB
 ---
 
 ### Agente 3: Diseñador de Ejercicios 💪
+
 **Responsabilidad**: Creación de ejercicios y evaluaciones
 
 **Funciones**:
+
 - Banco de ejercicios graduados (⭐ → ⭐⭐⭐⭐)
 - Casos de prueba en 3 niveles
 - Soluciones modelo completas
@@ -148,6 +158,7 @@ graph TB
 **Outputs**: `modulo_X/tema_Y_subtema_Z_ejercicios.md` (3000-4000 palabras)
 
 **Tipos de Ejercicios**:
+
 - Conceptuales (comprensión)
 - Prácticos (implementación)
 - Desafíos (optimización/creatividad)
@@ -156,9 +167,11 @@ graph TB
 ---
 
 ### Agente 4: Generador de Simulaciones 🎮
+
 **Responsabilidad**: Visualizaciones interactivas
 
 **Funciones**:
+
 - Programación de artifacts React/HTML
 - Visualizaciones de algoritmos y conceptos
 - Controles interactivos (Play/Pause/Step/Reset)
@@ -169,6 +182,7 @@ graph TB
 **Outputs**: Archivos `.html` o `.jsx` en `simulaciones/`
 
 **Características**:
+
 - 100% funcional y autocontenido
 - Responsive design
 - Documentación inline
@@ -177,9 +191,11 @@ graph TB
 ---
 
 ### Agente 5: Integrador y Control de Calidad 🔧
+
 **Responsabilidad**: Ensamblaje y validación
 
 **Funciones**:
+
 - Compilación de todos los componentes
 - Validación estructural/técnica/pedagógica
 - Detección de gaps y redundancias
@@ -188,13 +204,15 @@ graph TB
 - Generación de guías (estudiante/instructor)
 
 **Inputs**: Todos los archivos del curso  
-**Outputs**: 
+**Outputs**:
+
 - `CURSO_COMPLETO.md` (15k-20k palabras)
 - `MENU.md` (navegación)
 - `REPORTE_VALIDACION.md`
 - `MATRIZ_TRAZABILIDAD.csv`
 
 **Validaciones Automáticas**:
+
 - ✅ Grafo de dependencias acíclico
 - ✅ Completitud de módulos
 - ✅ Duración dentro de rango (±15%)
@@ -206,9 +224,11 @@ graph TB
 ---
 
 ### Agente 6: Diseñador Gráfico 🎨
+
 **Responsabilidad**: Recursos visuales
 
 **Funciones**:
+
 - Generación de diagramas Mermaid
 - Prompts para DALL-E/Stable Diffusion
 - Ilustraciones técnicas
@@ -216,7 +236,8 @@ graph TB
 - Esquemas de arquitectura
 
 **Inputs**: Contenido del módulo  
-**Outputs**: 
+**Outputs**:
+
 - Imágenes en `media/`
 - Diagramas insertados en contenido
 - `prompts_visuales.md`
@@ -224,9 +245,11 @@ graph TB
 ---
 
 ### Agente 7: Guionista 🎬
+
 **Responsabilidad**: Guiones para audio/video
 
 **Funciones**:
+
 - Adaptación de contenido técnico a narrativa
 - Estructura de guión profesional
 - Marcación de tiempos
@@ -237,6 +260,7 @@ graph TB
 **Outputs**: `modulos/modulo_X/tema_Y_subtema_Z_guion.md`
 
 **Formato del Guión**:
+
 - Ficha técnica (duración, tono)
 - Timestamps
 - Texto del locutor
@@ -246,9 +270,11 @@ graph TB
 ---
 
 ### Agente 8: Locutor (Audio Generator) 🎙️
+
 **Responsabilidad**: Síntesis de voz
 
 **Funciones**:
+
 - Conversión de guiones a audio
 - Uso de síntesis de voz (TTS)
 - Generación de archivos WAV
@@ -256,11 +282,13 @@ graph TB
 - Inserción de reproductores en contenido
 
 **Inputs**: Guiones de texto  
-**Outputs**: 
+**Outputs**:
+
 - Archivos `.wav` en `media/`
 - Reproductores HTML embebidos
 
 **Tecnología**:
+
 - PowerShell con System.Speech (Windows)
 - Voces configurables (Microsoft Sabina/Salome)
 - Script automatizado: `generate_all_audios.ps1`
@@ -268,9 +296,11 @@ graph TB
 ---
 
 ### Agente 9: Evaluador 📊
+
 **Responsabilidad**: Evaluaciones y solucionarios
 
 **Funciones**:
+
 - Bancos de preguntas por módulo
 - Respuestas con rationale explicado
 - Alineación pedagógica con objetivos
@@ -278,11 +308,13 @@ graph TB
 - Retroalimentación formativa
 
 **Inputs**: Contenido del módulo  
-**Outputs**: 
+**Outputs**:
+
 - `modulo_X/tema_Y_subtema_Z_evaluacion.md`
 - Incluye preguntas y solucionario
 
 **Tipos de Preguntas**:
+
 - Opción múltiple
 - Verdadero/Falso con justificación
 - Código para completar
@@ -292,9 +324,11 @@ graph TB
 ---
 
 ### Agente 10: Generador PDF 📄
+
 **Responsabilidad**: Maquetación profesional
 
 **Funciones**:
+
 - Conversión Markdown → PDF
 - Inserción de tabla de contenidos
 - Paginación correcta
@@ -306,6 +340,7 @@ graph TB
 **Outputs**: `Manual_Profesional_vX.pdf`
 
 **Tecnología**:
+
 - Node.js con markdown-pdf o Paged.js
 - HTML/CSS para estilos
 - Script: `generate_pdf.js`
@@ -313,9 +348,11 @@ graph TB
 ---
 
 ### Agente 11: Editor Cognitivo 🧠
+
 **Responsabilidad**: Optimización cognitiva del contenido
 
 **Funciones**:
+
 - Aplicación de analogías efectivas
 - Simplificación sin pérdida de rigor
 - Mejora de ejemplos
@@ -326,6 +363,7 @@ graph TB
 **Outputs**: Contenido optimizado (reemplaza original)
 
 **Técnicas Aplicadas**:
+
 - Analogías del mundo real
 - Progresión de complejidad gradual
 - Ejemplos concretos antes que abstractos
@@ -334,9 +372,11 @@ graph TB
 ---
 
 ### Agente 12: Analista de Preconceptos 🔍
+
 **Responsabilidad**: Nivelación de audiencia
 
 **Funciones**:
+
 - Identificación de conceptos fundamentales
 - Creación del Módulo 0 (Prerrequisitos)
 - Glosario jerárquico
@@ -347,6 +387,7 @@ graph TB
 **Outputs**: `modulo_0/tema_0.1_preconceptos.md`
 
 **Contenido del Módulo 0**:
+
 - Conceptos transversales
 - Definiciones clave
 - Relaciones entre conceptos
@@ -707,6 +748,7 @@ Puedes invocar a cada agente por separado para tareas específicas o para regene
 **Propósito**: Conversión masiva de guiones a audio WAV
 
 **Uso**:
+
 ```powershell
 # Procesar todo el curso
 .\generate_all_audios.ps1 -BaseDirectory "e:\repositories\teach-laoz-courses-generator\curso_devops_avanzado"
@@ -719,6 +761,7 @@ Puedes invocar a cada agente por separado para tareas específicas o para regene
 ```
 
 **Características**:
+
 - ✅ Búsqueda recursiva de archivos `*_guion.md`
 - ✅ Extracción automática del texto del locutor
 - ✅ Soporte para 3 formatos de guión diferentes
@@ -727,6 +770,7 @@ Puedes invocar a cada agente por separado para tareas específicas o para regene
 - ✅ Reportes de progreso y estadísticas
 
 **Voces disponibles** (Windows):
+
 - `Microsoft Sabina Desktop` (Español España)
 - `Microsoft Salome Desktop - Spanish (Colombia)` (Español Colombia - **predeterminada**)
 - `Microsoft Helena Desktop` (Español España)
@@ -735,15 +779,17 @@ Puedes invocar a cada agente por separado para tareas específicas o para regene
 
 ### Script de Generación de PDF
 
-**Archivo**: `scripts/generate_pdf.js`  
+**Archivo**: `scripts/pdf/generate_pdf.js`  
 **Propósito**: Convertir curso completo a PDF profesional
 
 **Uso**:
+
 ```bash
-node scripts/generate_pdf.js cursos/curso_devops_avanzado/CURSO_COMPLETO.md
+node scripts/pdf/generate_pdf.js cursos/curso_devops_avanzado/CURSO_COMPLETO.md
 ```
 
 **Características**:
+
 - ✅ Conversión Markdown → PDF
 - ✅ Tabla de contenidos automática
 - ✅ Estilos profesionales
@@ -863,8 +909,8 @@ teach-laoz-courses-generator/
 │           └── concepto_recursion.jsx
 │
 ├── scripts/                         # Scripts de automatización
-│   ├── generate_audio.js            # Generador de audio (Node.js)
-│   └── generate_pdf.js              # Generador de PDF (Node.js)
+│   ├── audio/generate_audio.js      # Generador de audio (Node.js)
+│   └── pdf/generate_pdf.js          # Generador de PDF (Node.js)
 │
 ├── templates/                       # Plantillas reutilizables
 │   └── (plantillas para diferentes tipos de contenido)
@@ -877,22 +923,26 @@ teach-laoz-courses-generator/
 ### Archivos Clave por Curso
 
 #### Archivos de Configuración
+
 - **`.env`**: Variables de entorno y configuración del curso
 - **`plan_curricular.md`**: Arquitectura completa del curso
 - **`estructura_curso.json`**: Estructura en formato JSON para parseo automático
 
 #### Archivos de Contenido
+
 - **`modulo_X/tema_Y_subtema_Z_contenido.md`**: Material teórico-práctico
 - **`modulo_X/tema_Y_subtema_Z_ejercicios.md`**: Banco de ejercicios graduados
 - **`modulo_X/tema_Y_subtema_Z_evaluacion.md`**: Evaluaciones con solucionario
 - **`modulo_X/tema_Y_subtema_Z_guion.md`**: Guión para audio/video
 
 #### Archivos de Salida
+
 - **`CURSO_COMPLETO.md`**: Compilación integrada de todo el curso
 - **`Manual_vX.pdf`**: Versión PDF profesional
 - **`MENU.md`**: Índice navegable del curso
 
 #### Archivos de Validación
+
 - **`REPORTE_VALIDACION.md`**: Resultado de las validaciones automáticas
 - **`MATRIZ_TRAZABILIDAD.csv`**: Mapeo objetivo→contenido→ejercicio
 
@@ -1019,6 +1069,7 @@ teach-laoz-courses-generator/
 ### Actualización de Contenido
 
 **Para módulos obsoletos:**
+
 ```bash
 # Re-ejecutar solo el Agente 2 (Sintetizador) para módulos específicos
 /2-sintetizador-contenido
@@ -1027,24 +1078,28 @@ teach-laoz-courses-generator/
 ```
 
 **Para mantener arquitectura estable:**
+
 - El Plan Curricular (Agente 1) debe modificarse con cuidado
 - Los cambios estructurales requieren regeneración completa
 
 ### Mejora de Ejercicios
 
 **Basado en feedback de estudiantes:**
+
 ```bash
 # Re-ejecutar Agente 3 con nuevo contexto
 /3-disenador-ejercicios
 ```
 
 **Agregar casos de prueba:**
+
 - Incorporar errores reales de estudiantes
 - Expandir rúbricas según necesidad
 
 ### Nuevas Simulaciones
 
 **Para conceptos visuales nuevos:**
+
 ```bash
 # Ejecutar Agente 4 para concepto específico
 /4-generador-simulaciones
@@ -1068,6 +1123,7 @@ teach-laoz-courses-generator/
 ### Depuración
 
 **Activar logs detallados:**
+
 ```javascript
 // En el Manager
 const DEBUG_MODE = true;
@@ -1078,6 +1134,7 @@ if (DEBUG_MODE) {
 ```
 
 **Revisar archivos generados:**
+
 ```powershell
 # Verificar estructura de directorios
 Get-ChildItem -Recurse cursos/mi_curso/modulos
@@ -1093,6 +1150,7 @@ Get-ChildItem -Filter "*.wav" cursos/mi_curso/media
 ### Para Especificaciones Completas
 
 Revisar los archivos de workflow individuales en `.agent/workflows/`:
+
 - `0-manager-curso.md` - Orquestación completa
 - `1-estratega-curricular.md` - Diseño curricular (8.5 KB)
 - `2-sintetizador-contenido.md` - Generación de contenido (12 KB)
@@ -1173,10 +1231,12 @@ Para mejorar el sistema:
 ## ✨ EJEMPLOS DE CURSOS GENERADOS
 
 ### Curso DevOps Avanzado
+
 **Ubicación**: `cursos/curso_devops_avanzado/`  
 **Módulos**: 12  
 **Duración**: 40 horas  
 **Características**:
+
 - ✅ 12 módulos completos
 - ✅ 48 subtemas con contenido
 - ✅ 48 guiones de audio

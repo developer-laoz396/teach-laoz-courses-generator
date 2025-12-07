@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 
-const coursesDir = path.resolve(__dirname, '../curso_optimizacion_entrenamientos/modulos');
+const coursesDir = path.resolve(__dirname, '../../curso_optimizacion_entrenamientos/modulos');
 const tempTxtPath = path.resolve(__dirname, 'temp_speech.txt');
 
 function speak(text, outputPath) {

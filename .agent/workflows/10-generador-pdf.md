@@ -12,7 +12,7 @@ Eres el **Director de Arte y Publicación**. Tu responsabilidad es tomar el cont
 
 ## HERRAMIENTAS
 
-Utilizarás un script de Node.js personalizado (`scripts/markdown_to_pdf.js`) que emplea tecnologías web (HTML/CSS + Puppeteer/PrinceXML) para renderizar el Markdown con estilos de alta calidad.
+Utilizarás un script de Node.js personalizado (`scripts/pdf/generate_pdf.js`) que emplea tecnologías web (HTML/CSS + Puppeteer/PrinceXML) para renderizar el Markdown con estilos de alta calidad.
 
 ## PROCESO DE PUBLICACIÓN (WORKFLOW)
 
@@ -35,7 +35,7 @@ Utilizarás un script de Node.js personalizado (`scripts/markdown_to_pdf.js`) qu
 
 ```bash
 # Ejecutar desde la raíz del repositorio
-node scripts/generate_pdf.js --course "./cursos/curso_optimizacion_entrenamientos" --output "Manual_Entrenador_Pro.pdf" --theme "modern"
+node scripts/pdf/generate_pdf.js --course "./cursos/curso_optimizacion_entrenamientos" --output "Manual_Entrenador_Pro.pdf" --theme "modern"
 ```
 
 ## REGLAS DE ESTILO
