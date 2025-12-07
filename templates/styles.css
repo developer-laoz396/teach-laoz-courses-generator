@@ -1,0 +1,95 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --secondary: #1e293b;
+    --text: #334155;
+    --light-bg: #f8fafc;
+    --border: #e2e8f0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 11pt; /* Ajuste para impresión */
+}
+
+/* Portada */
+.cover-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+}
+.logo { width: 120px; margin-bottom: 2rem; }
+.main-title { font-size: 3rem; color: var(--primary); line-height: 1.2; margin-bottom: 0.5rem; }
+.subtitle { font-size: 1.5rem; color: var(--secondary); font-weight: 300; margin-bottom: 3rem; }
+.meta { color: #94a3b8; font-size: 0.9rem; margin-top: auto; padding-bottom: 2rem; }
+
+/* TOC */
+.toc-container { page-break-after: always; }
+.toc-list { list-style: none; padding: 0; }
+.toc-list li { margin-bottom: 0.25rem; } /* Más compacto */
+.toc-list a { 
+    text-decoration: none; 
+    color: var(--secondary); 
+    display: flex; 
+    justify-content: space-between; /* Para separar texto y número */
+    width: 100%; 
+    font-size: 0.9rem; /* Letra más pequeña */
+    border-bottom: 1px dotted #e2e8f0; /* Leader dots visuales simples */
+}
+
+/* Paginación en TOC (Requiere Paged.js) */
+.toc-list a::after {
+    content: target-counter(attr(href), page);
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.toc-item-1 > a { font-weight: 700; font-size: 1rem; margin-top: 0.5rem; color: var(--primary); }
+.toc-item-2 > a { margin-left: 1.5rem; font-size: 0.85rem; color: #64748b; }
+
+/* Contenido */
+.module-section { 
+    background: var(--primary); 
+    color: white; 
+    padding: 2rem; 
+    border-radius: 8px; 
+    margin: 2rem 0; 
+    page-break-before: always; 
+}
+.module-title { color: white !important; border: none; margin: 0; }
+
+h1 { color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; margin-top: 2rem; }
+h2 { color: var(--secondary); margin-top: 1.5rem; }
+h3 { color: #475569; font-size: 1.1rem; }
+
+/* Listas y Checklists */
+ul.contains-task-list { list-style: none; padding-left: 0; }
+li.task-list-item { 
+    margin-bottom: 0.5rem; 
+    background: #f1f5f9; 
+    padding: 0.5rem 1rem; 
+    border-radius: 6px; 
+    display: flex; 
+    align-items: center; 
+}
+input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
+
+/* Solucionario */
+.solucionario-section { page-break-before: always; background: #fffbeb; padding: 2rem; border-radius: 8px; }
+.solution-block { margin-bottom: 2rem; border-bottom: 1px solid #fae8b0; padding-bottom: 1rem; }
+.solution-content { font-size: 0.95rem; color: #78350f; }
+
+/* Utilidades */
+.page-break { page-break-after: always; }
+img { max-width: 100%; height: auto; display: block; margin: 1rem auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-radius: 6px;}
+
+/* Mermaid */
+.mermaid { display: flex; justify-content: center; margin: 2rem 0; }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="40" fill="#2563eb" />
+  <path d="M60 140 L100 60 L140 140 Z" fill="white" />
+  <circle cx="100" cy="110" r="15" fill="#2563eb" />
+  <text x="100" y="180" font-family="Arial" font-size="20" fill="white" text-anchor="middle" font-weight="bold">TEACH LAOZ</text>
+</svg>
