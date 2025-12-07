@@ -2,4 +2,4 @@ curso_devops/
 curso_preconceptos_javascript/
 curso_solid_javascript/
 *.zip
-.env
+node_modules/
