@@ -1,5 +1,8 @@
-curso_devops/
-curso_preconceptos_javascript/
-curso_solid_javascript/
+curso_*/
+cursos/
 *.zip
 node_modules/
+*.wav
+*.mp3
+*.pdf
+media/
