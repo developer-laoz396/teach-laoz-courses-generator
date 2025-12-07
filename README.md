@@ -692,9 +692,9 @@ Puedes invocar a cada agente por separado para tareas específicas o para regene
 
 ## 📚 DOCUMENTACIÓN ADICIONAL
 
-- **[ARQUITECTURA.md](./ARQUITECTURA.md)**: Diagramas de arquitectura, componentes, capas, patrones de diseño y modelo de datos
-- **[WORKFLOWS.md](./WORKFLOWS.md)**: Documentación detallada de workflows, flujos de interacción, protocolos de comunicación y manejo de errores
-- **[EJEMPLOS_INTERACCIONES.md](./EJEMPLOS_INTERACCIONES.md)**: Ejemplo completo paso a paso de la generación del Curso DevOps Avanzado con diagramas de secuencia, cronología y estadísticas reales
+- **[ARQUITECTURA.md](./docs/ARQUITECTURA.md)**: Diagramas de arquitectura, componentes, capas, patrones de diseño y modelo de datos
+- **[WORKFLOWS.md](./docs/WORKFLOWS.md)**: Documentación detallada de workflows, flujos de interacción, protocolos de comunicación y manejo de errores
+- **[EJEMPLOS_INTERACCIONES.md](./docs/EJEMPLOS_INTERACCIONES.md)**: Ejemplo completo paso a paso de la generación del Curso DevOps Avanzado con diagramas de secuencia, cronología y estadísticas reales
 - **[.agent/workflows/](`./.agent/workflows/)**: Especificaciones individuales de cada agente
 
 ---
@@ -1109,7 +1109,7 @@ Revisar los archivos de workflow individuales en `.agent/workflows/`:
 
 ### Documentación Técnica
 
-- **WORKFLOWS.md**: Diagramas de flujo, secuencias de interacción y protocolos de comunicación
+- **docs/WORKFLOWS.md**: Diagramas de flujo, secuencias de interacción y protocolos de comunicación
 
 ### Tecnologías Utilizadas
 
@@ -1137,7 +1137,7 @@ Sistema diseñado para uso con Claude API o Claude CLI.
 Para mejorar el sistema:
 
 1. **Nuevos Agentes**: Agregar en `.agent/workflows/` siguiendo el formato existente
-2. **Mejoras a Workflows**: Actualizar `WORKFLOWS.md` con nuevos diagramas
+2. **Mejoras a Workflows**: Actualizar `docs/WORKFLOWS.md` con nuevos diagramas
 3. **Scripts Adicionales**: Agregar en `scripts/` con documentación
 4. **Templates**: Agregar plantillas reutilizables en `templates/`
 
@@ -1189,7 +1189,7 @@ Para mejorar el sistema:
 
 ## 🔗 ENLACES ÚTILES
 
-- [Documentación de Workflows](./WORKFLOWS.md)
+- [Documentación de Workflows](./docs/WORKFLOWS.md)
 - [Especificaciones de Agentes](./.agent/workflows/)
 - [Script de Generación de Audio](./generate_all_audios.ps1)
 - [Cursos Generados](./cursos/)
