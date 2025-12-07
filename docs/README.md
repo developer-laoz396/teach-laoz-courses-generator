@@ -5,7 +5,9 @@ Esta carpeta contiene la documentación técnica completa del sistema de generac
 ## 📑 Índice de Documentos
 
 ### [ARQUITECTURA.md](./ARQUITECTURA.md)
+
 Documentación completa de la arquitectura del sistema:
+
 - **Diagrama C4 de Contexto**: Vista general del sistema
 - **Arquitectura por Capas**: Presentación, Orquestación, Servicios, Datos
 - **Flujos de Datos**: Entrada, procesamiento y salida
@@ -16,7 +18,9 @@ Documentación completa de la arquitectura del sistema:
 - **Métricas y Observabilidad**: Sistema de logging y monitoreo
 
 ### [WORKFLOWS.md](./WORKFLOWS.md)
+
 Flujos de trabajo detallados de todos los agentes:
+
 - **Workflow del Manager (A0)**: Orquestación completa en 5 fases
 - **Workflows de Producción**: Content Pipeline detallado
 - **Workflow de Audio**: Generación de locuciones
@@ -26,7 +30,9 @@ Flujos de trabajo detallados de todos los agentes:
 - **Logging y Métricas**: Sistema de trazabilidad
 
 ### [EJEMPLOS_INTERACCIONES.md](./EJEMPLOS_INTERACCIONES.md)
+
 Ejemplo completo de generación del curso "DevOps Avanzado":
+
 - **Paso a Paso**: Todas las fases de ejecución
 - **Diagramas de Secuencia**: Interacciones entre agentes en cada fase
 - **Cronograma**: Timeline Gantt de 11 horas
@@ -41,12 +47,12 @@ Ejemplo completo de generación del curso "DevOps Avanzado":
 
 ## 🎯 Navegación Rápida
 
-| Si necesitas... | Consulta... |
-|----------------|-------------|
-| Entender la arquitectura general | [ARQUITECTURA.md](./ARQUITECTURA.md) |
-| Ver cómo interactúan los agentes | [WORKFLOWS.md](./WORKFLOWS.md) |
-| Seguir un ejemplo real completo | [EJEMPLOS_INTERACCIONES.md](./EJEMPLOS_INTERACCIONES.md) |
-| Especificación de un agente específico | [../.agent/workflows/](../.agent/workflows/) |
+| Si necesitas...                        | Consulta...                                              |
+| -------------------------------------- | -------------------------------------------------------- |
+| Entender la arquitectura general       | [ARQUITECTURA.md](./ARQUITECTURA.md)                     |
+| Ver cómo interactúan los agentes       | [WORKFLOWS.md](./WORKFLOWS.md)                           |
+| Seguir un ejemplo real completo        | [EJEMPLOS_INTERACCIONES.md](./EJEMPLOS_INTERACCIONES.md) |
+| Especificación de un agente específico | [../.agent/workflows/](../.agent/workflows/)             |
 
 ## 📊 Diagramas Disponibles
 
