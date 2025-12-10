@@ -1,0 +1,570 @@
+# PLAN CURRICULAR: ARQUITECTURA DE SOFTWARE AVANZADA
+
+## 1. VISION GENERAL
+
+Este curso lleva al estudiante desde los conceptos básicos de diseño de software hasta la arquitectura de sistemas distribuidos de alta escala. Se enfoca en el "Trade-off analysis" (análisis de compromiso) como la habilidad principal del arquitecto.
+
+## 2. ESTRUCTURA DE MÓDULOS
+
+Aquí tienes **el mismo contenido convertido de JSON a un formato Markdown estructurado**, legible y organizado por títulos, listas y subtítulos.
+(No es código: es Markdown nativo y expandido.)
+
+---
+
+## **Módulo 0 — NIVELACIÓN Y FUNDAMENTOS (PRECONCEPTOS)**
+
+**Objetivo:** Establecer un lenguaje común.
+
+### **0.1 Glosario de Arquitectura**
+
+* Trade-off
+* Latencia
+* Throughput
+* Disponibilidad
+* Consistencia
+* Tolerancia a Fallos
+* Elasticidad
+
+### **0.2 Fundamentos de Arquitectura de Software**
+
+* Diseño vs Arquitectura
+* Arquitectura como conjunto de decisiones
+* NFR (Non Functional Requirements)
+
+### **0.3 Diagramación Esencial**
+
+* C4 Model
+* Diagramas de Secuencia
+* Diagramas de Componentes
+
+---
+
+## **Módulo 1 — LA MINDSET DEL ARQUITECTO**
+
+### **1.1 ¿Qué es realmente la Arquitectura?**
+
+* Estructura vs Comportamiento
+* Arquitectura como decisiones difíciles de cambiar
+* Documentación viva y ADRs
+
+### **1.2 Atributos de Calidad (-ilities)**
+
+* Scalability
+* Maintainability
+* Performance
+* Reliability
+* Security
+* Testability
+* Usability
+
+### **1.3 Ley de Conway y Diseño Organizacional**
+
+* Implicaciones en microservicios
+* Inversión del Diseño de Conway
+
+### **1.4 Arquitecto como Líder Técnico**
+
+* Comunicación
+* Mentoría
+* Toma de Decisiones
+
+---
+
+## **Módulo 2 — DISEÑO LIMPIO Y DEUDA TÉCNICA**
+
+### **2.1 Modularidad Eficaz**
+
+* Acoplamiento
+* Cohesión
+* Separación de Responsabilidades
+* Bounded Context
+
+### **2.2 Principios SOLID en Arquitectura**
+
+* Interpretación práctica a nivel de componentes y módulos
+
+### **2.3 Arquitectura Limpia y Hexagonal**
+
+* Ports & Adapters
+* Dependencia hacia adentro
+* Testing con dobles
+
+### **2.4 Deuda Técnica**
+
+* Tipos de Deuda
+* Priorización y Pago
+* Deuda Arquitectónica
+
+---
+
+## **Módulo 3 — PATRONES MONOLÍTICOS**
+
+### **3.1 Layered Architecture (Capas)**
+
+* El estándar de facto
+* Capa de Dominio
+* Capa de Aplicación
+* Capa de Infraestructura
+
+### **3.2 Microkernel**
+
+* Plug-in architecture
+* Extensibilidad
+* Casos de uso reales
+
+### **3.3 Pipeline**
+
+* Pipes and Filters
+* Procesamiento por etapas
+* Cadenas de responsabilidad
+
+### **3.4 Monolito Modular**
+
+* Separación estricta de módulos
+* Comunicación interna organizada
+
+---
+
+## **Módulo 4 — SISTEMAS DISTRIBUIDOS (EL SALTO)**
+
+### **4.1 Falacias de la Computación Distribuida**
+
+* Latencia no es cero
+* La red no es confiable
+* Topologías cambiantes
+
+### **4.2 Microservicios**
+
+* Definición
+* Peligros
+* Diseño en torno a Bounded Contexts
+* Anti-patrones de microservicios
+
+### **4.3 Service-Based Architecture**
+
+* El punto medio
+* Servicios *coarse-grained*
+* Menos overhead que microservicios
+
+### **4.4 Monolito Distribuido (anti-patrón)**
+
+* Síntomas
+* Cómo evitarlo
+
+---
+
+## **Módulo 5 — COMUNICACIÓN Y EVENTOS**
+
+### **5.1 Síncrono vs Asíncrono**
+
+* REST
+* gRPC
+* WebSockets
+* Mensajería asíncrona
+
+### **5.2 Event-Driven Architecture (EDA) y Event Sourcing**
+
+* EDA
+* Event Sourcing
+* Eventos como fuente de verdad
+* Patrón Outbox
+
+### **5.3 Brokers de Mensajería**
+
+* Kafka
+* RabbitMQ
+* Azure Service Bus
+* Redis Streams
+
+### **5.4 Diseño de Contratos**
+
+* Versionamiento
+* Backward compatibility
+* Esquemas (JSON Schema, Protobuf)
+
+---
+
+## **Módulo 6 — DATOS A ESCALA**
+
+### **6.1 Teorema CAP y PACELC**
+
+* CAP
+* PACELC
+* Implicaciones en bases distribuidas
+
+### **6.2 Consistencia Eventual vs Fuerte**
+
+* Modelos de consistencia
+* *Staleness*
+* *Read your own writes*
+
+### **6.3 Patrones de Datos Distribuidos**
+
+* CQRS
+* Database-per-service
+* Materialized Views
+* Replicación
+
+### **6.4 Transacciones Distribuidas**
+
+* SAGA Pattern
+* Coreografía vs Orquestación
+* Two-Phase Commit (por qué evitarlo)
+
+---
+
+## **Módulo 7 — RESILIENCIA Y OPERACIÓN**
+
+### **7.1 Circuit Breaker y Retry Pattern**
+
+* Circuit Breaker
+* Retry Pattern
+* Timeouts
+* Bulkheads
+
+### **7.2 Observabilidad**
+
+* Logs
+* Metrics
+* Tracing
+* Correlación
+* Dashboards
+
+### **7.3 Arquitectura Serverless y Cloud Native**
+
+* Serverless
+* Cloud Native
+* Contenedores
+* Kubernetes
+* Autoscaling
+
+### **7.4 DevOps para Arquitectos**
+
+* CI/CD
+* Infraestructura como Código
+* GitOps
+
+## 3. FORMATO DE ENTREGA (JSON PARA AGENTE MANAGER)
+
+```json
+[
+  {
+    "id": 0,
+    "modulo": "modulo_0",
+    "titulo": "NIVELACIÓN Y FUNDAMENTOS (PRECONCEPTOS)",
+    "objetivo": "Establecer un lenguaje común.",
+    "temas": [
+      {
+        "id": "0.1",
+        "nombre": "Glosario de Arquitectura",
+        "subtemas": [
+          "Trade-off",
+          "Latencia",
+          "Throughput",
+          "Disponibilidad",
+          "Consistencia",
+          "Tolerancia a Fallos",
+          "Elasticidad"
+        ]
+      },
+      {
+        "id": "0.2",
+        "nombre": "Fundamentos de Arquitectura de Software",
+        "subtemas": [
+          "Diseño vs Arquitectura",
+          "Arquitectura como conjunto de decisiones",
+          "NFR (Non Functional Requirements)"
+        ]
+      },
+      {
+        "id": "0.3",
+        "nombre": "Diagramación Esencial",
+        "subtemas": [
+          "C4 Model",
+          "Diagramas de Secuencia",
+          "Diagramas de Componentes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "modulo": "modulo_1",
+    "titulo": "LA MINDSET DEL ARQUITECTO",
+    "temas": [
+      {
+        "id": "1.1",
+        "nombre": "¿Qué es realmente la Arquitectura?",
+        "subtemas": [
+          "Estructura vs Comportamiento",
+          "Arquitectura como decisiones difíciles de cambiar",
+          "Documentación viva y ADRs"
+        ]
+      },
+      {
+        "id": "1.2",
+        "nombre": "Atributos de Calidad (-ilities)",
+        "subtemas": [
+          "Scalability",
+          "Maintainability",
+          "Performance",
+          "Reliability",
+          "Security",
+          "Testability",
+          "Usability"
+        ]
+      },
+      {
+        "id": "1.3",
+        "nombre": "Ley de Conway y Diseño Organizacional",
+        "subtemas": [
+          "Implicaciones en microservicios",
+          "Inversión del Diseño de Conway"
+        ]
+      },
+      {
+        "id": "1.4",
+        "nombre": "Arquitecto como Líder Técnico",
+        "subtemas": ["Comunicación", "Mentoría", "Toma de Decisiones"]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "modulo": "modulo_2",
+    "titulo": "DISEÑO LIMPIO Y DEUDA TÉCNICA",
+    "temas": [
+      {
+        "id": "2.1",
+        "nombre": "Modularidad Eficaz",
+        "subtemas": [
+          "Acoplamiento",
+          "Cohesión",
+          "Separación de Responsabilidades",
+          "Bounded Context"
+        ]
+      },
+      {
+        "id": "2.2",
+        "nombre": "Principios SOLID en Arquitectura",
+        "subtemas": ["Interpretación práctica a nivel de componentes y módulos"]
+      },
+      {
+        "id": "2.3",
+        "nombre": "Arquitectura Limpia y Hexagonal",
+        "subtemas": [
+          "Ports & Adapters",
+          "Dependencia hacia adentro",
+          "Testing con dobles"
+        ]
+      },
+      {
+        "id": "2.4",
+        "nombre": "Deuda Técnica",
+        "subtemas": [
+          "Tipos de Deuda",
+          "Priorización y Pago",
+          "Deuda Arquitectónica"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "modulo": "modulo_3",
+    "titulo": "PATRONES MONOLÍTICOS",
+    "temas": [
+      {
+        "id": "3.1",
+        "nombre": "Layered Architecture (Capas)",
+        "subtemas": [
+          "El estándar de facto",
+          "Capa de Dominio",
+          "Capa de Aplicación",
+          "Capa de Infraestructura"
+        ]
+      },
+      {
+        "id": "3.2",
+        "nombre": "Microkernel",
+        "subtemas": [
+          "Plug-in architecture",
+          "Extensibilidad",
+          "Casos de uso reales"
+        ]
+      },
+      {
+        "id": "3.3",
+        "nombre": "Pipeline",
+        "subtemas": [
+          "Pipes and Filters",
+          "Procesamiento por etapas",
+          "Cadenas de responsabilidad"
+        ]
+      },
+      {
+        "id": "3.4",
+        "nombre": "Monolito Modular",
+        "subtemas": [
+          "Separación estricta de módulos",
+          "Comunicación interna organizada"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "modulo": "modulo_4",
+    "titulo": "SISTEMAS DISTRIBUIDOS (EL SALTO)",
+    "temas": [
+      {
+        "id": "4.1",
+        "nombre": "Falacias de la Computación Distribuida",
+        "subtemas": [
+          "Latencia no es cero",
+          "La red no es confiable",
+          "Topologías cambiantes"
+        ]
+      },
+      {
+        "id": "4.2",
+        "nombre": "Microservicios",
+        "subtemas": [
+          "Definición",
+          "Peligros",
+          "Diseño en torno a Bounded Contexts",
+          "Anti-patrones de microservicios"
+        ]
+      },
+      {
+        "id": "4.3",
+        "nombre": "Service-Based Architecture",
+        "subtemas": [
+          "El punto medio",
+          "Servicios coarse-grained",
+          "Menos overhead que microservicios"
+        ]
+      },
+      {
+        "id": "4.4",
+        "nombre": "Monolito Distribuido (anti-patrón)",
+        "subtemas": ["Síntomas", "Cómo evitarlo"]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "modulo": "modulo_5",
+    "titulo": "COMUNICACIÓN Y EVENTOS",
+    "temas": [
+      {
+        "id": "5.1",
+        "nombre": "Síncrono vs Asíncrono",
+        "subtemas": ["REST", "gRPC", "WebSockets", "Mensajería asíncrona"]
+      },
+      {
+        "id": "5.2",
+        "nombre": "Event-Driven Architecture (EDA) y Event Sourcing",
+        "subtemas": [
+          "EDA",
+          "Event Sourcing",
+          "Eventos como fuente de verdad",
+          "Patrón Outbox"
+        ]
+      },
+      {
+        "id": "5.3",
+        "nombre": "Brokers de Mensajería",
+        "subtemas": ["Kafka", "RabbitMQ", "Azure Service Bus", "Redis Streams"]
+      },
+      {
+        "id": "5.4",
+        "nombre": "Diseño de Contratos",
+        "subtemas": [
+          "Versionamiento",
+          "Backward compatibility",
+          "Esquemas (JSON Schema, Protobuf)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "modulo": "modulo_6",
+    "titulo": "DATOS A ESCALA",
+    "temas": [
+      {
+        "id": "6.1",
+        "nombre": "Teorema CAP y PACELC",
+        "subtemas": ["CAP", "PACELC", "Implicaciones en bases distribuidas"]
+      },
+      {
+        "id": "6.2",
+        "nombre": "Consistencia Eventual vs Fuerte",
+        "subtemas": [
+          "Modelos de consistencia",
+          "Staleness",
+          "Read your own writes"
+        ]
+      },
+      {
+        "id": "6.3",
+        "nombre": "Patrones de Datos Distribuidos",
+        "subtemas": [
+          "CQRS",
+          "Database-per-service",
+          "Materialized Views",
+          "Replicación"
+        ]
+      },
+      {
+        "id": "6.4",
+        "nombre": "Transacciones Distribuidas",
+        "subtemas": [
+          "SAGA Pattern",
+          "Coreografía vs Orquestación",
+          "Two-Phase Commit (por qué evitarlo)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "modulo": "modulo_7",
+    "titulo": "RESILIENCIA Y OPERACIÓN",
+    "temas": [
+      {
+        "id": "7.1",
+        "nombre": "Circuit Breaker y Retry Pattern",
+        "subtemas": [
+          "Circuit Breaker",
+          "Retry Pattern",
+          "Timeouts",
+          "Bulkheads"
+        ]
+      },
+      {
+        "id": "7.2",
+        "nombre": "Observabilidad",
+        "subtemas": ["Logs", "Metrics", "Tracing", "Correlación", "Dashboards"]
+      },
+      {
+        "id": "7.3",
+        "nombre": "Arquitectura Serverless y Cloud Native",
+        "subtemas": [
+          "Serverless",
+          "Cloud Native",
+          "Contenedores",
+          "Kubernetes",
+          "Autoscaling"
+        ]
+      },
+      {
+        "id": "7.4",
+        "nombre": "DevOps para Arquitectos",
+        "subtemas": ["CI/CD", "Infraestructura como Código", "GitOps"]
+      }
+    ]
+  }
+]
+```

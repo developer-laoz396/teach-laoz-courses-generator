@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Latencia: N+1 vs Batching</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+        .container { display: flex; gap: 20px; }
+        .panel { flex: 1; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; }
+        .bar-container { background: #eee; height: 20px; margin-top: 10px; border-radius: 10px; overflow: hidden; }
+        .bar { height: 100%; width: 0%; transition: width 0.1s; }
+        .btn { padding: 10px 20px; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-right: 10px; }
+        .btn-bad { background: #e74c3c; }
+        .btn-good { background: #27ae60; }
+        .log { margin-top: 10px; font-family: monospace; height: 150px; overflow-y: auto; background: #333; color: #0f0; padding: 10px; border-radius: 5px; }
+        .server { text-align: center; margin-bottom: 20px; font-size: 40px; }
+        .packet { position: relative; width: 10px; height: 10px; background: red; border-radius: 50%; display: none; margin: 0 auto; transition: top 0.5s linear; }
+    </style>
+</head>
+<body>
+
+<h1>La Falacia de "Latencia Cero"</h1>
+<p>Imagina que tienes que cargar 50 productos. El servidor está a 100ms de latencia (ida y vuelta).</p>
+
+<div class="container">
+    <!-- N+1 Approach -->
+    <div class="panel">
+        <h2>Enfoque Ingenuo (N+1)</h2>
+        <p>Hacer un loop `foreach` y llamar al servidor por cada producto.</p>
+        <div class="server">Server ☁️</div>
+        <button class="btn btn-bad" onclick="runNPlusOne()">Ejecutar Loop (50 reqs)</button>
+        <div class="log" id="log1">Esperando...</div>
+        <p>Tiempo Total: <strong id="time1">0</strong> ms</p>
+    </div>
+
+    <!-- Batch Approach -->
+    <div class="panel">
+        <h2>Enfoque Batching</h2>
+        <p>Pedir los 50 productos en una sola llamada.</p>
+        <div class="server">Server ☁️</div>
+        <button class="btn btn-good" onclick="runBatch()">Ejecutar Batch (1 req)</button>
+        <div class="log" id="log2">Esperando...</div>
+        <p>Tiempo Total: <strong id="time2">0</strong> ms</p>
+    </div>
+</div>
+
+<script>
+    const LATENCY = 100; // ms per request round trip simulation
+    const ITEMS = 50;
+
+    async function runNPlusOne() {
+        const log = document.getElementById('log1');
+        const timeDisplay = document.getElementById('time1');
+        log.innerHTML = "Iniciando Loop...\n";
+        
+        let start = Date.now();
+        
+        for(let i=1; i<=ITEMS; i++) {
+            log.innerHTML += `> Request producto ${i}...\n`;
+            log.scrollTop = log.scrollHeight;
+            // Simulate network delay
+            await new Promise(r => setTimeout(r, LATENCY / 5)); // Speed up visuals a bit for UX
+            log.innerHTML += `< Response ${i} OK\n`;
+            timeDisplay.textContent = (Date.now() - start) * 5; // Fake real time scale
+        }
+        
+        log.innerHTML += "TERMINADO.";
+    }
+
+    async function runBatch() {
+        const log = document.getElementById('log2');
+        const timeDisplay = document.getElementById('time2');
+        log.innerHTML = "Iniciando Batch...\n";
+        
+        let start = Date.now();
+        
+        log.innerHTML += `> Request IDs: [1..${ITEMS}]...\n`;
+        // Simulate network delay
+        await new Promise(r => setTimeout(r, LATENCY / 5));
+        log.innerHTML += `< Response (Lista de ${ITEMS} items) OK\n`;
+        
+        log.innerHTML += "TERMINADO.";
+        timeDisplay.textContent = LATENCY;
+    }
+</script>
+
+</body>
+</html>
