@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for i in {1..10})",
+      "Bash(do mkdir -p \"modulo_$i\")",
+      "Bash(done)",
+      "Bash(node ../../scripts/curso/generate_course_content.js:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

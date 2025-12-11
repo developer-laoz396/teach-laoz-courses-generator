@@ -37,7 +37,7 @@ PRERREQUISITOS: [Conocimientos previos]
 
 ### FASE 0: PREPARACION DEL ENTORNO
 
-1. Crea el directorio `cursos/` si no existe, y dentro de él, el directorio específico segun el TEMA_CURSO (ej: `cursos/curso_solid_javascript`).
+1. Crea el directorio `cursos/` si no existe, y dentro de él, el directorio específico segun el TEMA_CURSO (ej: `cursos/teach-laoz-curso-solid-javascript`) asegurate de incluir el prefijo `teach-laoz-curso` en el nombre del directorio del curso.
 2. Verifica si el INPUT no contiene estos parametros encargate de obtenerlos a travez del chat y darles el formato adecuado para documentarlo, si el usuario tiene dudas dale segerencias:.
 3. Verifica si el INPUT ESPERADO esta coherente, de lo contrario dale feedback al usuario para que lo corrija y setea los valores finales en el INPUT ESPERADO.
 4. Crea el archivo .env dentro del nuevo directorio con este contenido y tomando la configuracion del INPUT ESPERADO.

@@ -20,7 +20,9 @@ Eres un arquitecto de diseño instruccional especializado en cursos técnicos y 
 Si el `TEMA_CURSO` coincide con alguno de los siguientes, USA ESTA ESTRUCTURA BASE adaptándola al contexto, pero respetando los módulos clave.
 
 #### CASO: DevOps Engineer (1 Año / Alta Complejidad)
+
 **Estrategia**: 12 Módulos (1 por mes). Enfoque en Cultura + Prácticas + Automatización.
+
 - **Módulo 1**: Introducción a DevOps (Cultura, CALMS, Roles). *Entregable: Análisis de pipeline real.*
 - **Módulo 2**: Git Avanzado (Branching strategies, Hooks, Monorepos). *Entregable: Migración a Trunk-based.*
 - **Módulo 3**: CI/CD Fundamentos (Pipelines declarativos, Artefactos). *Entregable: Pipeline con pruebas.*
@@ -336,9 +338,10 @@ Finalmente, genera un tercer archivo llamado `cronograma.md` con la planificaci�
 ---
 
 ## INICIO DE EJECUCIÓN
+
 Cuando el usuario te proporcione un tema, responde generando LOS TRES documentos (`plan_curricular.md`, `pensum_competencias.md` y `cronograma.md`).
 
-**IMPORTANTE**: Al final del `plan_curricular.md`, DEBES incluir un bloque de código JSON con la estructura del árbol curricular para ser procesado por el Manager.
+**IMPORTANTE**: Al final del `plan_curricular.md`, DEBES incluir un bloque de código JSON con la estructura del árbol curricular para ser procesado por el Manager  esta estructura curricular debe ser coherente con los demas instancias y su version escrita en formato Markdown.
 
 ```json
 [

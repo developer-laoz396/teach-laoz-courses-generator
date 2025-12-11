@@ -6,7 +6,14 @@ param(
     [string]$OutputDirectory = "",
     
     [Parameter(Mandatory=$false)]
-    [string]$VoiceName = "Microsoft Salome Desktop - Spanish (Colombia)"
+    [string]$VoiceName = "Microsoft Sabina Desktop"
+)
+
+# Voces preferidas en orden de prioridad
+$preferredVoices = @(
+    "Microsoft Sabina Desktop",                        # Predeterminada (España)
+    "Microsoft Salome Desktop - Spanish (Colombia)",  # Alternativa Colombia
+    "Microsoft Helena Desktop"                         # Alternativa España
 )
 
 # Función para extraer el texto del guión
@@ -63,7 +70,36 @@ function Extract-ScriptText {
         }
         
         # Unir todos los fragmentos con un espacio
-        return ($extractedText -join ' ').Trim()
+        $finalText = ($extractedText -join ' ').Trim()
+        
+        # Limpiar comentarios y direcciones de producción
+        # Remover secciones "NOTAS DE PRODUCCIÓN" completas
+        # Coincide con: NOTAS DE PRODUCCIÓN (con/sin asteriscos) hasta el siguiente título ## o final
+        $finalText = $finalText -replace '(?i)\*?\*?NOTAS?\s+DE\s+PRODUCCI[OÓ]N\*?\*?:?.*?(?=##|\z)', ''
+        
+        # Remover contenido entre corchetes [...]
+        $finalText = $finalText -replace '\[[^\]]*\]', ''
+        
+        # Remover asteriscos (markdown bold)
+        $finalText = $finalText -replace '\*\*', ''
+        
+        # Remover guiones bajos (markdown italic)
+        $finalText = $finalText -replace '_', ''
+        
+        # Remover backticks (código inline)
+        $finalText = $finalText -replace '`', ''
+        
+        # Remover marcadores de tiempo [00:00-00:00]
+        $finalText = $finalText -replace '\[\d{2}:\d{2}-\d{2}:\d{2}\]', ''
+        $finalText = $finalText -replace '\[\d{2}:\d{2}\s*-\s*\d{2}:\d{2}\]', ''
+        
+        # Remover etiquetas HTML comunes
+        $finalText = $finalText -replace '<[^>]+>', ''
+        
+        # Normalizar espacios múltiples
+        $finalText = $finalText -replace '\s+', ' '
+        
+        return $finalText.Trim()
     }
     catch {
         Write-Error "Error al procesar el archivo $FilePath : $_"
@@ -126,16 +162,41 @@ Write-Host "---"
 Add-Type -AssemblyName System.Speech
 $synthesizer = New-Object System.Speech.Synthesis.SpeechSynthesizer
 
+# Obtener voces instaladas
+$installedVoices = $synthesizer.GetInstalledVoices() | ForEach-Object { $_.VoiceInfo.Name }
+
+Write-Host "Voces instaladas en el sistema:" -ForegroundColor Cyan
+$installedVoices | ForEach-Object {
+    Write-Host "  - $_" -ForegroundColor Gray
+}
+Write-Host ""
+
+# Seleccionar la mejor voz disponible
+$selectedVoice = $null
+foreach ($voice in $preferredVoices) {
+    if ($installedVoices -contains $voice) {
+        $selectedVoice = $voice
+        break
+    }
+}
+
+if ($null -eq $selectedVoice) {
+    Write-Error "❌ No se encontró ninguna voz en español. Voces disponibles:"
+    $installedVoices | ForEach-Object { Write-Host "  - $_" }
+    Write-Host "`n⚠ Instala una voz en español desde:"
+    Write-Host "  Configuración > Hora e idioma > Voz > Agregar voces"
+    $synthesizer.Dispose()
+    exit 1
+}
+
 try {
-    $synthesizer.SelectVoice($VoiceName)
-    Write-Host "✓ Voz '$VoiceName' configurada correctamente"
+    $synthesizer.SelectVoice($selectedVoice)
+    Write-Host "✓ Usando voz: '$selectedVoice'" -ForegroundColor Green
 }
 catch {
-    Write-Warning "⚠ Voz '$VoiceName' no encontrada, usando voz predeterminada."
-    Write-Host "Voces disponibles:"
-    $synthesizer.GetInstalledVoices() | ForEach-Object {
-        Write-Host "  - $($_.VoiceInfo.Name)"
-    }
+    Write-Error "❌ Error al configurar la voz: $_"
+    $synthesizer.Dispose()
+    exit 1
 }
 
 Write-Host "---"

@@ -1,5 +1,9 @@
 curso_*/
-cursos/
+cursos/*
+!cursos/curso_arquitectura_software/
+!cursos/curso_proyecto_vida/
+!cursos/teach-laoz-curso_optimizacion_entrenamientos/
+!cursos/teach-laoz-curso-dibujo-ninos/
 *.zip
 node_modules/
 *.wav

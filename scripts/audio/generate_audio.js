@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 
-const coursesDir = path.resolve(__dirname, '../../curso_optimizacion_entrenamientos/modulos');
+const coursesDir = process.argv[2] ? path.resolve(process.argv[2], 'modulos') : path.resolve(__dirname, '../../cursos/curso_comunicacion_tecnica_efectiva/modulos');
 const tempTxtPath = path.resolve(__dirname, 'temp_speech.txt');
 
 function speak(text, outputPath) {
@@ -41,9 +41,13 @@ function speak(text, outputPath) {
 async function main() {
     console.log('🎙️ Iniciando Agente 8 (V2): Locución Robusta...');
 
-    if (!fs.existsSync(coursesDir)) return;
+    if (!fs.existsSync(coursesDir)) {
+        console.error(`❌ Error: No existe el directorio ${coursesDir}`);
+        return;
+    }
 
     const modules = fs.readdirSync(coursesDir);
+    console.log(`Debug: Found ${modules.length} modules in ${coursesDir}`);
 
     for (const mod of modules) {
         const modPath = path.join(coursesDir, mod);
@@ -59,10 +63,16 @@ async function main() {
                 const lines = content.split('\n');
                 let scriptText = "";
                 lines.forEach(line => {
-                    if (line.includes('**LOCUTOR**:')) {
-                        scriptText += line.replace('**LOCUTOR**:', '').trim() + " ";
+                    // Normalizar: eliminar brackets si existen y verificar
+                    // Puede ser **LOCUTOR**: o **[LOCUTOR]**:
+                    const normalized = line.replace('**[LOCUTOR]**:', '**LOCUTOR**:');
+                    
+                    if (normalized.includes('**LOCUTOR**:')) {
+                        scriptText += normalized.replace('**LOCUTOR**:', '').trim() + " ";
                     }
                 });
+
+                console.log(`Debug: Processing ${file}. Found LOCUTOR text length: ${scriptText.length}`);
 
                 if (scriptText) {
                     await speak(scriptText, audioPath);
