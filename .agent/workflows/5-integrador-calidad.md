@@ -33,6 +33,49 @@ METADATOS_CURSO: {
 
 ## PROCESO DE VALIDACIÓN
 
+### FASE 0: VALIDACIÓN DE COMPLETITUD TOTAL Y CHECKLIST
+
+#### 0.1 Validación vs Plan Curricular
+
+```plaintext
+Cargar PLAN_CURRICULAR (plan_curricular.md)
+Para cada Tema T y Subtema S definido en el plan:
+  1. Verificar existencia de carpeta de módulo correspondiente
+  2. Verificar existencia de Archivo de Contenido (CRÍTICO):
+    - Formato: `tema_X.Y_subtema_Z_contenido.md` (o `tema_X.Y_contenido.md` si no hay subtemas)
+    - Estado: Debe existir y no estar vacío (> 100 bytes)
+    - Debe integrar explícitamente los gráficos relevantes (`media/*.svg` o `*.md`) y simulaciones (`simulaciones/*.html`) dentro del cuerpo del contenido, no solo como archivos satélite. La integración debe ser contextual, referenciando y explicando cada recurso visual o interactivo en el flujo del tema.
+  3. Verificar existencia de Archivo de Ejercicios:
+    - Formato: `tema_X.Y_subtema_Z_ejercicios.md` (o `tema_X.Y_ejercicios.md` si no hay subtemas)
+    - Estado: Debe existir y contener al menos un ejercicio
+  4. Verificar existencia de Evaluación asociada:
+    - Formato: `tema_X.Y_subtema_Z_evaluacion.md` (o `tema_X.Y_evaluacion.md` si no hay subtemas)
+    - Estado: Debe existir y contener al menos una pregunta
+  5. SI FALTA CONTENIDO, INTEGRACIÓN DE GRÁFICOS/SIMULACIONES, EJERCICIOS O EVALUACIÓN -> ❌ ERROR CRÍTICO. DETENER INTEGRACIÓN.
+    (No se puede generar un curso con huecos en el temario oficial, sin integración visual/interactiva, ni sin mecanismos de práctica o evaluación por tema)
+```
+
+#### 0.2 Checklist de Calidad por Tema (Definition of Done)
+
+```plaintext
+Para cada archivo de contenido validado en 0.1, verificar existencia de artifacts satélite:
+
+| Elemento | Archivo Esperado | Agente | Criterio |
+|:---|:---|:---|:---|
+| 1. CONTENIDO | `*_contenido.md` | A2 | Primer elemento obligatorio. Base de todo. |
+| 2. PRECONCEPTOS | `*_preconceptos.md` | A12 | Validación de conceptos previos y analogías. |
+| 3. COGNITIVO | (Revisión interna) | A11 | Validación de lenguaje, tono y claridad. |
+| 4. EJERCICIOS | `*_ejercicios.md` | A3 | Ejercicios prácticos por niveles. |
+| 5. GUIÓN | `*_guion.md` | A7 | Narrativa para audio. |
+| 6. AUDIO SCRIPT | `*_guion_optimizada.txt` | A7 | Texto limpio para TTS. |
+| 7. AUDIO MP3 | `*.mp3` | A8 | Archivo de audio generado. |
+| 8. GRÁFICOS | `media/*.svg` o `*.md` | A6 | Soporte visual del tema. |
+| 9. SIMULACIONES | `simulaciones/*.html` | A4 | Artifact interactivo (si aplica). |
+| 10. EVALUACIÓN | `*_evaluacion.md` | A9 | Preguntas de validación de conocimientos. |
+
+Acción: Generar reporte de "Deuda de Producción" si completitud < 100%.
+```
+
 ### FASE 1: VALIDACIÓN ESTRUCTURAL
 
 #### 1.1 Verificación de completitud
