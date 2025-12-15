@@ -42,8 +42,10 @@ Ejemplo completo de generación del curso "DevOps Avanzado":
 
 ## 🔗 Documentación Relacionada
 
-- **[Workflows de Agentes](../.agent/workflows/)**: Especificaciones individuales de cada agente (A0-A12)
+- **[Workflows de Agentes](../.agent/workflows/)**: Especificaciones individuales de cada agente (A0-A13)
 - **[README Principal](../README.md)**: Visión general del proyecto
+- **[Agente 13: Verificador de Integridad](../.agent/workflows/README_AGENTE_13.md)**: Sistema de verificación y referencias académicas
+- **[Ejemplo del Agente 13](../.agent/workflows/EJEMPLO_AGENTE_13.md)**: Caso de uso completo del verificador
 
 ## 🎯 Navegación Rápida
 
@@ -53,6 +55,8 @@ Ejemplo completo de generación del curso "DevOps Avanzado":
 | Ver cómo interactúan los agentes       | [WORKFLOWS.md](./WORKFLOWS.md)                           |
 | Seguir un ejemplo real completo        | [EJEMPLOS_INTERACCIONES.md](./EJEMPLOS_INTERACCIONES.md) |
 | Especificación de un agente específico | [../.agent/workflows/](../.agent/workflows/)             |
+| Sistema de verificación de referencias | [README_AGENTE_13.md](../.agent/workflows/README_AGENTE_13.md) |
+| Ejemplo de verificación completo       | [EJEMPLO_AGENTE_13.md](../.agent/workflows/EJEMPLO_AGENTE_13.md) |
 
 ## 📊 Diagramas Disponibles
 

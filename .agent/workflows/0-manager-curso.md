@@ -22,6 +22,7 @@ Eres el **Director de Producción Educativa**. Tu responsabilidad es orquestar a
 10. **Agente 10 (Generador PDF)**: Maqueta el contenido final en un manual PDF profesional.
 11. **Agente 11 (Editor Cognitivo)**: Optimiza el contenido para mejorar la retención y comprensión (analogías, simplificación).
 12. **Agente 12 (Analista Preconceptos)**: Genera el Módulo 0 de nivelación con conceptos fundamentales.
+13. **Agente 13 (Verificador de Integridad)**: Verifica la integridad del contenido, busca referencias reales y actuales (3 por tema), y genera un documento de referencias académicas/técnicas que sustenten el contenido.
 
 ## INPUT ESPERADO
 
@@ -44,7 +45,7 @@ PRERREQUISITOS: [Conocimientos previos]
 
 ```plaintext
 # Configuración del Curso
-COURSE_TOPIC=$TEMA_CURSO 
+COURSE_TOPIC=$TEMA_CURSO
 COURSE_COMPLEXITY=$COMPLEJIDAD
 COURSE_DURATION=$DURACIÓN
 COURSE_AUDIENCE=$AUDIENCIA
@@ -66,6 +67,7 @@ WORKFLOW_PATH_EVALUADOR="../../.agent/workflows/9-evaluador.md"
 WORKFLOW_PATH_GENERADOR_PDF="../../.agent/workflows/10-generador-pdf.md"
 WORKFLOW_PATH_EDITOR_COGNITIVO="../../.agent/workflows/11-editor-cognitivo.md"
 WORKFLOW_PATH_ANALISTA_PRECONCEPTOS="../../.agent/workflows/12-analista-preconceptos.md"
+WORKFLOW_PATH_VERIFICADOR_INTEGRIDAD="../../.agent/workflows/13-verificador-integridad.md"
 ```
 
 ### FASE 1: PLANIFICACIÓN (Llamada a Agente 1)
@@ -77,47 +79,58 @@ WORKFLOW_PATH_ANALISTA_PRECONCEPTOS="../../.agent/workflows/12-analista-preconce
 ### FASE 1.5: NIVELACIÓN (Llamada a Agente 12)
 
 1. Identifica los conceptos fundamentales transversales del curso.
-2. Llama al **Agente 12** para generar el `modulo_0/tema_0.1_preconceptos.md`.
-    - **Objetivo**: Crear un glosario jerárquico y explicativo que nivele a la audiencia antes de iniciar.
+2. Llama al **Agente 12** para generar el `modulo_0/tema_x_glosario.md` por cada tema.
+   - **Objetivo**: Crear un glosario jerárquico y explicativo que nivele a la audiencia antes de iniciar.
 
 ### FASE 2: PRODUCCIÓN DE CONTENIDO (Iteración Granular)
 
 1. **Parseo del Plan**: Lee el bloque JSON al final del Plan Curricular.
 2. **Creación de Estructura**:
-    - Para cada Módulo, crea un directorio `modulos/modulo_X`.
+   - Para cada Módulo, crea un directorio `modulos/modulo_X`.
 3. **Iteración de Producción**:
-    - Para cada **Subtema** en el árbol JSON:
-        - **Agente 2 (Contenido)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_contenido.md`.
-        - **Agente 11 (Optimización)**: Procesa el contenido generado por Agente 2 para aplicar mejoras cognitivas y analogías. Reemplaza el archivo original con la versión optimizada.
-        - **Agente 3 (Ejercicios)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_ejercicios.md`.
-        - **Agente 7 (Guión)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_guion.md`.
-        - **Agente 8 (Audio)**: Genera `media/modulo_X_tema_Y_subtema_Z.wav`.
-        - **Agente 9 (Evaluación)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_evaluacion.md`.
+   - Para cada **Subtema** en el árbol JSON:
+     - **Agente 2 (Contenido)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_contenido.md`.
+     - **Agente 3 (Ejercicios)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_ejercicios.md`.
+     - **Agente 7 (Guión)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_guion.md`.
+     - **Agente 8 (Audio)**: Genera `media/modulo_X_tema_Y_subtema_Z.wav`.
+     - **Agente 9 (Evaluación)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_evaluacion.md`.
+4. **Calidad cognitiva**:
+   - Lee cada uno de los archivos geenrados y verifica la calidad cognitiva:
+     - **Agente 11 (Optimización)**: Procesa el contenido, ejercicios, guión, evaluación generado en la primera parte de la fase 2 para aplicar mejoras cognitivas y analogías. Reemplaza el archivo original con la versión optimizada.
+     - **Agente 12 (Preconceptos)**: Procesa el contenido, ejercicios, guión, evaluación generado en la primera parte de la fase 2 para generar o ampliar el `modulo_0/tema_x_preconceptos.md`.
 
 ### FASE 3: ENRIQUECIMIENTO (Llamada a Agentes 4 y 6)
 
 1. **Simulaciones (Agente 4)**:
-    - Identifica conceptos en el Plan Curricular que requieran visualización (marcados como `Requiere visualización: Sí`).
-    - Llama al **Agente 4** especificando los parámetros técnicos y pedagógicos.
+
+   - Identifica conceptos en el Plan Curricular que requieran visualización (marcados como `Requiere visualización: Sí`).
+   - Llama al **Agente 4** especificando los parámetros técnicos y pedagógicos.
 
 2. **Artefactos Gráficos (Agente 6)**:
 
-    - Para cada módulo, identifica conceptos clave que se beneficien de un diagrama o ilustración.
-    - Llama al **Agente 6** pasando el contenido del módulo y la audiencia.
-    - Integra los bloques de Mermaid o las **Imágenes Generadas** (enlaces a `media/`) en el contenido del módulo.
+   - Para cada módulo, identifica conceptos clave que se beneficien de un diagrama o ilustración.
+   - Llama al **Agente 6** pasando el contenido del módulo y la audiencia.
+   - Integra los bloques de Mermaid o las **Imágenes Generadas** (enlaces a `media/`) en el contenido del módulo.
 
 3. **Generación de Audio (Agente 8)**:
-    - Llama al **Agente 8** pasando el guión generado por el Agente 7.
-    - Genera el archivo de audio en `media/`.
-    - Inserta el reproductor de audio en el contenido del módulo.
+   - Llama al **Agente 8** pasando el guión generado por el Agente 7.
+   - Genera el archivo de audio en `media/`.
+   - Inserta el reproductor de audio en el contenido del módulo.
 
 ### FASE 4: INTEGRACIÓN Y ENTREGA (Llamada a Agente 5)
 
 1. Recopila todos los artifacts generados (Planes, Contenidos, Ejercicios, Simulaciones).
 2. Llama al **Agente 5** para que valide la coherencia global y genere el archivo maestro `CURSO_COMPLETO.md`.
-3. **Generación de Manual (Agente 10)**:
-    - Una vez aprobado el `CURSO_COMPLETO.md`.
-    - Llama al **Agente 10** para generar el PDF final (v1.0).
+3. **Verificación de Integridad (Agente 13)**:
+   - Una vez generado el `CURSO_COMPLETO.md`.
+   - Llama al **Agente 13** para verificar la integridad del contenido.
+   - El Agente 13 generará:
+     - `REFERENCIAS.md`: Documento con 3 referencias reales y actuales por cada tema
+     - `REPORTE_VERIFICACION.md`: Reporte ejecutivo de calidad e integridad
+   - Revisa el reporte de verificación y si hay errores críticos, vuelve a llamar a los agentes correspondientes para corrección.
+4. **Generación de Manual (Agente 10)**:
+   - Una vez aprobado el `CURSO_COMPLETO.md` y verificado por el Agente 13.
+   - Llama al **Agente 10** para generar el PDF final (v1.0).
 
 ## FORMATO DE OUTPUT (TU RESPUESTA)
 
@@ -131,6 +144,7 @@ Tu respuesta debe ser un **Reporte de Ejecución** que narre el proceso y presen
 - **Estrategia**: ✅ Completada
 - **Módulos Producidos**: [N]/[Total]
 - **Simulaciones**: [Cantidad]
+- **Verificación de Integridad**: ✅ Completada
 - **Integración**: ✅ Finalizada
 
 ## ARTIFACTS GENERADOS
@@ -138,6 +152,8 @@ Tu respuesta debe ser un **Reporte de Ejecución** que narre el proceso y presen
 1. [plan_curricular.md](path/to/file)
 2. [modulo_1_contenido.md](path/to/file)
    ...
+   N-2. [REFERENCIAS.md](path/to/file)
+   N-1. [REPORTE_VERIFICACION.md](path/to/file)
    N. [CURSO_COMPLETO.md](path/to/file)
 
 ## RESUMEN EJECUTIVO

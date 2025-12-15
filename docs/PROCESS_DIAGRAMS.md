@@ -1,6 +1,6 @@
 # 🗺️ MAPA DE PROCESOS: ARQUITECTURA DE AGENTES TEACH-LAOZ
 
-Este documento detalla el flujo de trabajo orquestado para la generación masiva y de alta calidad de cursos educativos. Describe cómo interactúan los 12 agentes especializados para transformar una idea abstracta en un producto educativo completo.
+Este documento detalla el flujo de trabajo orquestado para la generación masiva y de alta calidad de cursos educativos. Describe cómo interactúan los 13 agentes especializados para transformar una idea abstracta en un producto educativo completo, con verificación de integridad y referencias académicas.
 
 ---
 
@@ -33,11 +33,22 @@ Una vez el texto es sólido, entran los especialistas bajo demanda (Lazy Loading
 
 ### 🔴 Fase 4: Integración y Calidad (El Auditor)
 
-El **Agente 5** es el guardián.
+El **Agente 5** es el guardián inicial.
 
 - **Checklist**: Verifica que no falte nada (Fase 0 validation).
 - **Inyección**: Incrusta los medios (Fase 3) dentro del texto (Fase 2).
-- **Empaquetado**: Genera la navegación, índices y guías de estudio. Solo entonces el curso es "Shippable".
+- **Empaquetado**: Genera la navegación, índices y guías de estudio.
+
+### 🟣 Fase 4.2: Verificación de Integridad y Referencias (El Validador)
+
+El **Agente 13 (Verificador de Integridad)** asegura la credibilidad académica.
+
+- **Verificación**: Analiza cada tema para detectar afirmaciones que requieren sustento.
+- **Búsqueda de Referencias**: Encuentra 3 referencias reales y actuales por cada tema (documentación oficial, papers, libros técnicos).
+- **Documentación**: Genera `REFERENCIAS.md` (documento completo con todas las referencias) y `REPORTE_VERIFICACION.md` (evaluación de calidad).
+- **Control de Calidad**: Identifica errores críticos y proporciona recomendaciones priorizadas antes de la publicación.
+
+Solo después de la verificación exitosa, el curso es considerado "Shippable".
 
 ```mermaid
 graph TD
@@ -77,7 +88,16 @@ graph TD
         Validar --> |No| LoopModulos
         Validar --> |Sí| Inyectar[Inyección de Medios en Contenido]
         Inyectar --> Nav[Generar Navegación e Índices]
-        Nav --> Final((Curso Empaquetado))
+        Nav --> A13[A13: Verificador Integridad]
+    end
+
+    subgraph FASE_4_2_VERIFICACION [Fase 4.2: Verificación de Integridad]
+        A13 --> |Verifica Contenido| BuscarRef[Buscar 3 Referencias/Tema]
+        BuscarRef --> GenDoc[Generar REFERENCIAS.md]
+        GenDoc --> GenReport[Generar REPORTE_VERIFICACION.md]
+        GenReport --> CheckErrors{¿Errores Críticos?}
+        CheckErrors --> |Sí| LoopModulos
+        CheckErrors --> |No| Final((Curso Empaquetado))
     end
 
     style Start fill:#2ecc71,stroke:#333
@@ -106,6 +126,7 @@ sequenceDiagram
     participant Sats as Agentes Satélite (A3, A7, A9)
     participant Specs as Agentes Esp. (A4, A6, A8)
     participant A5 as A5 Integrador
+    participant A13 as A13 Verificador
 
     Note over User, A5: FASE 1: DEFINICIÓN
     User->>A0: Solicita nuevo curso
@@ -147,7 +168,23 @@ sequenceDiagram
     A5->>A2: Inyecta Simulaciones/Gráficos en Markdown
     A5->>A5: Genera Presentaciones de Módulo
     A5->>A5: Genera Índice Global
-    A5-->>User: Reporte Final "Ready to Ship"
+    A5-->>User: CURSO_COMPLETO.md generado
+
+    Note over User, A5: FASE 4.2: VERIFICACIÓN DE INTEGRIDAD
+    User->>A13: Solicita Verificación
+    A13->>A13: Analiza contenido de todos los módulos
+    A13->>A13: Busca 3 referencias por tema
+    A13->>A13: Valida actualidad y calidad
+    A13->>A13: Genera REFERENCIAS.md
+    A13->>A13: Genera REPORTE_VERIFICACION.md
+    
+    alt Errores Críticos Detectados
+        A13-->>User: Reporte con Errores ❌
+        User->>A2: Corregir contenido
+    else Sin Errores Críticos
+        A13-->>User: Curso Verificado ✅
+        A13-->>User: Reporte Final "Ready to Ship"
+    end
 ```
 
 ## 3. DIRECTORIO DE AGENTES
@@ -168,3 +205,4 @@ A continuación se listan los especialistas que componen el sistema, con enlaces
 | **A6**  | [Diseñador Gráfico](../.agent/workflows/6-disenador-grafico.md)              | Visualización de conceptos mediante diagramas (Mermaid/SVG).  |     📜     |
 | **A8**  | [Locutor](../.agent/workflows/8-locutor.md)                                  | Conversión de guiones a audio (TTS).                          |     📜     |
 | **A5**  | [Integrador de Calidad](../.agent/workflows/5-integrador-calidad.md)         | Auditoría, ensamblaje y empaquetado final del curso.          |     📜     |
+| **A13** | [Verificador de Integridad](../.agent/workflows/13-verificador-integridad.md) | Verificación de contenido y búsqueda de referencias académicas (3 por tema). Genera documentación de sustento. |     📜     |
