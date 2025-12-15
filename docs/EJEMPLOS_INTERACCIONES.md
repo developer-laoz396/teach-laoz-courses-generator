@@ -15,9 +15,9 @@ sequenceDiagram
     U->>M: Ejecutar /0-manager-curso
     M->>U: Solicitar parámetros
     U->>M: TEMA: "DevOps Avanzado"<br/>COMPLEJIDAD: "Alta"<br/>DURACIÓN: "40h"<br/>AUDIENCIA: "DevOps Engineers"
-    
+
     M->>M: Validar parámetros
-    
+
     rect rgb(240, 248, 255)
         Note over M,FS: Creación de Estructura
         M->>FS: Crear cursos/curso_devops_avanzado/
@@ -25,11 +25,12 @@ sequenceDiagram
         M->>FS: Generar .env con configuración
         FS-->>M: Estructura creada
     end
-    
+
     M->>U: ✅ Estructura inicializada
 ```
 
 **Archivos Creados**:
+
 ```
 cursos/curso_devops_avanzado/
 ├── .env
@@ -39,6 +40,7 @@ cursos/curso_devops_avanzado/
 ```
 
 **Contenido de `.env`**:
+
 ```bash
 COURSE_TOPIC=DevOps Avanzado
 COURSE_COMPLEXITY=Alta
@@ -59,7 +61,7 @@ sequenceDiagram
 
     M->>A1: Solicitar Plan Curricular
     activate A1
-    
+
     rect rgb(255, 250, 240)
         Note over A1: Análisis y Diseño
         A1->>A1: Analizar tema y audiencia
@@ -69,11 +71,11 @@ sequenceDiagram
         A1->>A1: Definir 3 rutas de aprendizaje
         A1->>A1: Generar estructura JSON
     end
-    
+
     A1-->>M: plan_curricular.md (3200 palabras)
     A1-->>M: estructura_curso.json
     deactivate A1
-    
+
     M->>FS: Guardar plan_curricular.md
     M->>FS: Guardar estructura_curso.json
     M->>M: Parsear JSON para iteración
@@ -87,9 +89,11 @@ sequenceDiagram
 ## MÓDULOS
 
 ### Módulo 0: Nivelación
+
 - Conceptos fundamentales transversales
 
 ### Módulo 1: Fundamentos de DevOps
+
 - Tema 1.1: ¿Qué es DevOps?
   - Subtema 1.1.1: Historia y evolución
   - Subtema 1.1.2: Principios CALMS
@@ -98,13 +102,16 @@ sequenceDiagram
   - Subtema 1.2.2: Anti-patrones comunes
 
 ### Módulo 2: Git Avanzado
+
 ...
 
 ### Módulo 12: Proyecto Final
+
 ...
 ```
 
 **Estructura JSON**:
+
 ```json
 {
   "curso": "DevOps Avanzado",
@@ -150,21 +157,22 @@ sequenceDiagram
 
     M->>A12: Generar Módulo 0 de Nivelación
     activate A12
-    
+
     rect rgb(250, 250, 250)
         Note over A12: Análisis de Prerrequisitos
         A12->>A12: Identificar conceptos base:<br/>- Linux CLI<br/>- YAML<br/>- Contenedores<br/>- HTTP/REST
         A12->>A12: Crear glosario jerárquico
         A12->>A12: Generar autoevaluación
     end
-    
+
     A12-->>M: modulo_0/tema_0.1_preconceptos.md
     deactivate A12
-    
+
     M->>FS: Guardar en modulos/modulo_0/
 ```
 
 **Contenido Generado**:
+
 ```markdown
 # MÓDULO 0: PRECONCEPTOS FUNDAMENTALES
 
@@ -173,6 +181,7 @@ sequenceDiagram
 **Definición**: Interfaz de texto para interactuar con el sistema operativo...
 
 **Comandos esenciales**:
+
 - `ls`, `cd`, `mkdir`, `rm`
 - `grep`, `awk`, `sed`
 - Pipes y redirecciones
@@ -182,9 +191,10 @@ sequenceDiagram
 **Definición**: Formato de serialización de datos legible por humanos...
 
 **Autoevaluación**:
+
 1. ¿Qué es un contenedor?
 2. Diferencia entre HTTP y HTTPS
-...
+   ...
 ```
 
 ---
@@ -212,7 +222,7 @@ sequenceDiagram
         A2-->>M: contenido_crudo.md (2847 palabras)
         deactivate A2
     end
-    
+
     rect rgb(255, 250, 205)
         Note over M,A11: Optimización Cognitiva
         M->>A11: Optimizar contenido
@@ -224,7 +234,7 @@ sequenceDiagram
         deactivate A11
         M->>FS: Guardar tema_1.1_subtema_1.1.1_contenido.md
     end
-    
+
     par Tareas Paralelas
         rect rgb(255, 240, 230)
             M->>A3: Generar ejercicios
@@ -234,7 +244,7 @@ sequenceDiagram
             deactivate A3
             M->>FS: Guardar ejercicios.md
         end
-        
+
         rect rgb(240, 230, 255)
             M->>A7: Generar guión
             activate A7
@@ -242,7 +252,7 @@ sequenceDiagram
             A7-->>M: guion.md
             deactivate A7
             M->>FS: Guardar guion.md
-            
+
             M->>A8: Generar audio
             activate A8
             A8->>A8: TTS con voz Salome
@@ -250,7 +260,7 @@ sequenceDiagram
             deactivate A8
             M->>FS: Guardar audio.wav
         end
-        
+
         rect rgb(230, 240, 255)
             M->>A9: Generar evaluación
             activate A9
@@ -263,6 +273,7 @@ sequenceDiagram
 ```
 
 **Resultado de la Iteración**:
+
 ```
 modulos/modulo_1/
 ├── tema_1.1_subtema_1.1.1_contenido.md (2847 palabras)
@@ -281,35 +292,36 @@ media/
 ```mermaid
 flowchart TD
     Start[Iniciar Loop] --> CheckSubtemas{¿Hay más subtemas?}
-    
+
     CheckSubtemas -->|Sí| GetNext[Obtener siguiente subtema]
     GetNext --> CallA2[Agente 2: Generar contenido]
     CallA2 --> CallA11[Agente 11: Optimizar]
     CallA11 --> SaveContent[Guardar contenido.md]
-    
+
     SaveContent --> Parallel[Ejecutar en paralelo]
-    
+
     Parallel --> CallA3[Agente 3: Ejercicios]
     Parallel --> CallA7[Agente 7: Guión]
     Parallel --> CallA9[Agente 9: Evaluación]
-    
+
     CallA7 --> CallA8[Agente 8: Audio]
-    
+
     CallA3 --> SaveAll[Guardar todos los archivos]
     CallA8 --> SaveAll
     CallA9 --> SaveAll
-    
+
     SaveAll --> Progress[Actualizar progreso]
     Progress --> CheckSubtemas
-    
+
     CheckSubtemas -->|No| Complete[Producción completa]
-    
+
     style Start fill:#90EE90
     style Complete fill:#FFD700
     style Parallel fill:#87CEEB
 ```
 
 **Progreso Mostrado al Usuario**:
+
 ```
 [1/48] ✓ Módulo 1 - Tema 1.1 - Subtema 1.1.1 completado
 [2/48] ✓ Módulo 1 - Tema 1.1 - Subtema 1.1.2 completado
@@ -339,7 +351,7 @@ sequenceDiagram
     rect rgb(230, 230, 255)
         Note over M,A4: Simulaciones Interactivas
         M->>M: Identificar conceptos visuales
-        
+
         loop Para cada concepto visual
             M->>A4: Generar simulación
             activate A4
@@ -351,11 +363,11 @@ sequenceDiagram
             M->>FS: Guardar en simulaciones/
         end
     end
-    
+
     rect rgb(255, 230, 230)
         Note over M,A6: Recursos Visuales
         M->>M: Identificar necesidades gráficas
-        
+
         loop Para cada recurso
             M->>A6: Generar diagrama/ilustración
             activate A6
@@ -369,6 +381,7 @@ sequenceDiagram
 ```
 
 **Simulaciones Generadas**:
+
 ```
 simulaciones/
 ├── ci_cd_pipeline_visualization.html
@@ -379,6 +392,7 @@ simulaciones/
 ```
 
 **Recursos Visuales**:
+
 ```
 media/
 ├── diagrama_arquitectura_microservicios.png
@@ -401,53 +415,53 @@ sequenceDiagram
 
     M->>A5: Compilar curso completo
     activate A5
-    
+
     rect rgb(255, 245, 230)
         Note over A5: Recopilación
         A5->>FS: Leer plan_curricular.md
         A5->>FS: Leer modulo_0/preconceptos.md
-        
+
         loop Para cada módulo
             A5->>FS: Leer todos los contenidos
             A5->>FS: Leer todos los ejercicios
             A5->>FS: Leer todas las evaluaciones
         end
     end
-    
+
     rect rgb(255, 230, 230)
         Note over A5: Validación Estructural
         A5->>A5: Verificar completitud
         A5->>A5: Validar grafo de dependencias
         A5->>A5: Verificar duración total
     end
-    
+
     rect rgb(230, 255, 230)
         Note over A5: Validación Técnica
         A5->>A5: Verificar código ejecutable
         A5->>A5: Validar terminología
         A5->>A5: Revisar formato
     end
-    
+
     rect rgb(230, 230, 255)
         Note over A5: Validación Pedagógica
         A5->>A5: Generar matriz de trazabilidad
         A5->>A5: Verificar progresión
         A5->>A5: Validar 3 rutas
     end
-    
+
     A5->>A5: Compilar CURSO_COMPLETO.md
     A5->>A5: Generar MENU.md
     A5->>A5: Crear REPORTE_VALIDACION.md
     A5->>A5: Generar MATRIZ_TRAZABILIDAD.csv
-    
+
     A5-->>M: Paquete completo
     deactivate A5
-    
+
     M->>FS: Guardar CURSO_COMPLETO.md
     M->>FS: Guardar MENU.md
     M->>FS: Guardar REPORTE_VALIDACION.md
     M->>FS: Guardar MATRIZ_TRAZABILIDAD.csv
-    
+
     M->>A10: Generar PDF profesional
     activate A10
     A10->>A10: Convertir Markdown → HTML
@@ -457,31 +471,36 @@ sequenceDiagram
     A10->>A10: Paginar contenido
     A10-->>M: Manual_DevOps_Avanzado_v1.0.pdf
     deactivate A10
-    
+
     M->>FS: Guardar PDF
     M->>U: ✅ Curso completo generado
 ```
 
 **Reporte de Validación**:
+
 ```markdown
 # REPORTE DE VALIDACIÓN
 
 ## Validaciones Estructurales
+
 ✅ Todos los módulos tienen archivos completos
 ✅ Grafo de dependencias es acíclico
 ✅ Duración total: 40.5h (dentro del rango 34-46h)
 
 ## Validaciones Técnicas
+
 ✅ Todo el código es ejecutable (152 bloques verificados)
 ✅ Terminología consistente (DevOps: 487 menciones)
 ⚠ 3 bloques de código requieren librerías externas
 
 ## Validaciones Pedagógicas
+
 ✅ Trazabilidad 100% (124 objetivos → 124 contenidos → 288 ejercicios)
 ✅ Progresión de dificultad validada
 ✅ 3 rutas implementadas y diferenciadas
 
 ## Estadísticas
+
 - Módulos: 12
 - Temas: 24
 - Subtemas: 48
@@ -541,22 +560,22 @@ gantt
 
 ### Llamadas a Agentes
 
-| Agente | Invocaciones | Duración Promedio | Tasa de Éxito | Reintentos |
-|--------|--------------|-------------------|---------------|------------|
-| A0: Manager | 1 | 11:00:00 | 100% | 0 |
-| A1: Estratega | 1 | 00:15:00 | 100% | 0 |
-| A2: Sintetizador | 48 | 00:08:30 | 98% | 2 |
-| A3: Diseñador Ejercicios | 48 | 00:06:45 | 100% | 0 |
-| A4: Simulador | 5 | 00:12:00 | 100% | 0 |
-| A5: Integrador | 1 | 00:20:00 | 100% | 0 |
-| A6: Diseñador Gráfico | 10 | 00:03:00 | 100% | 0 |
-| A7: Guionista | 48 | 00:04:30 | 100% | 0 |
-| A8: Locutor | 48 | 00:02:15 | 100% | 0 |
-| A9: Evaluador | 48 | 00:05:00 | 100% | 0 |
-| A10: Generador PDF | 1 | 00:10:00 | 100% | 0 |
-| A11: Editor Cognitivo | 48 | 00:03:30 | 100% | 0 |
-| A12: Analista | 1 | 00:08:00 | 100% | 0 |
-| **TOTAL** | **306** | - | **99.3%** | **2** |
+| Agente                   | Invocaciones | Duración Promedio | Tasa de Éxito | Reintentos |
+| ------------------------ | ------------ | ----------------- | ------------- | ---------- |
+| A0: Manager              | 1            | 11:00:00          | 100%          | 0          |
+| A1: Estratega            | 1            | 00:15:00          | 100%          | 0          |
+| A2: Sintetizador         | 48           | 00:08:30          | 98%           | 2          |
+| A3: Diseñador Ejercicios | 48           | 00:06:45          | 100%          | 0          |
+| A4: Simulador            | 5            | 00:12:00          | 100%          | 0          |
+| A5: Integrador           | 1            | 00:20:00          | 100%          | 0          |
+| A6: Diseñador Gráfico    | 10           | 00:03:00          | 100%          | 0          |
+| A7: Guionista            | 48           | 00:04:30          | 100%          | 0          |
+| A8: Locutor              | 48           | 00:02:15          | 100%          | 0          |
+| A9: Evaluador            | 48           | 00:05:00          | 100%          | 0          |
+| A10: Generador PDF       | 1            | 00:10:00          | 100%          | 0          |
+| A11: Editor Cognitivo    | 48           | 00:03:30          | 100%          | 0          |
+| A12: Analista            | 1            | 00:08:00          | 100%          | 0          |
+| **TOTAL**                | **306**      | -                 | **99.3%**     | **2**      |
 
 ### Volumen de Datos
 
@@ -667,6 +686,6 @@ Este ejemplo real muestra:
 ✅ **Trazabilidad completa**: Cada operación registrada y correlacionada  
 ✅ **Alta fiabilidad**: 99.3% de tasa de éxito con manejo automático de errores  
 ✅ **Escalabilidad probada**: Generación de 48 subtemas completos de manera consistente  
-✅ **Calidad validada**: 100% de trazabilidad pedagógica y código ejecutable  
+✅ **Calidad validada**: 100% de trazabilidad pedagógica y código ejecutable
 
 El sistema demuestra capacidad para generar cursos completos de alta calidad de manera automatizada, con intervención humana mínima y resultados consistentes.
