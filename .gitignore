@@ -10,3 +10,12 @@ node_modules/
 *.mp3
 *.pdf
 media/
+
+# Logs y métricas
+logs/
+*.log
+metrics-*.json
+logs-*.json
+dashboard*.html
+
+!cursos/teach-laoz-curso_github_Principiantes/

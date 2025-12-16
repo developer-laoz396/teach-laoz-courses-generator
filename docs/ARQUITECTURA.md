@@ -15,6 +15,7 @@ C4Context
         Container(planificacion, "Agentes de Planificación", "A1, A12", "Diseño curricular")
         Container(produccion, "Agentes de Producción", "A2, A3, A7, A8, A9, A11", "Generación de contenido")
         Container(enriquecimiento, "Agentes de Enriquecimiento", "A4, A6", "Recursos visuales")
+        Container(verificacion, "Agente de Verificación", "A13", "Integridad y referencias")
         Container(integracion, "Agentes de Integración", "A5, A10", "Compilación final")
     }
 
@@ -25,9 +26,11 @@ C4Context
     Rel(manager, planificacion, "Solicita plan")
     Rel(manager, produccion, "Solicita contenido")
     Rel(manager, enriquecimiento, "Solicita recursos")
+    Rel(manager, verificacion, "Solicita verificación")
     Rel(manager, integracion, "Solicita compilación")
 
     Rel(produccion, tts, "Genera audio")
+    Rel(verificacion, manager, "Alerta inconsistencias")
     Rel(integracion, pdf, "Genera PDF")
 
     Rel(manager, usuario, "Entrega curso completo")
@@ -69,6 +72,10 @@ graph TB
         A6[Diseñador Gráfico]
     end
 
+    subgraph "CAPA DE SERVICIOS - Verificación"
+        A13[Verificador Integridad]
+    end
+
     subgraph "CAPA DE SERVICIOS - Integración"
         A5[Integrador]
         A10[Generador PDF]
@@ -96,6 +103,7 @@ graph TB
     Workflow --> A9
     Workflow --> A4
     Workflow --> A6
+    Workflow --> A13
     Workflow --> A5
     Workflow --> A10
 
@@ -111,6 +119,7 @@ graph TB
     A10 --> FileSystem
     A11 --> FileSystem
     A12 --> FileSystem
+    A13 --> FileSystem
 
     Manager --> Config
     A1 -.-> Templates
@@ -174,6 +183,9 @@ graph LR
 
     P6 --> P7
 
+    P4 --> P11[Verificación Integridad]
+    P11 --> P12[Referencias]
+
     P3 --> O1
     P4 --> O1
     P5 --> O1
@@ -181,9 +193,13 @@ graph LR
     P8 --> O1
     P9 --> O4
     P10 --> O1
+    P12 --> O6[REFERENCIAS.md]
+    P12 --> O7[REPORTE_VERIFICACION.md]
 
     O1 --> O2
     O1 --> O5
+    O6 --> O1
+    O7 --> O5
 
     style P1 fill:#4ecdc4
     style O1 fill:#fd79a8
@@ -231,10 +247,19 @@ classDiagram
         +validar()
     }
 
+    class Verificador {
+        +ejecutar()
+        +buscarReferencias()
+        +validarIntegridad()
+        +detectarInconsistencias()
+        +generarReporte()
+    }
+
     Manager --> Agente
     Estratega ..|> Agente
     Sintetizador ..|> Agente
     Integrador ..|> Agente
+    Verificador ..|> Agente
 ```
 
 ### 2. Patrón Pipeline
@@ -436,7 +461,15 @@ graph TB
     V4 -->|Pasa| V5{Validación Pedagógica}
 
     V5 -->|Falla| Error3[Reportar Error Pedagógico]
-    V5 -->|Pasa| Output[Output Validado]
+    V5 -->|Pasa| V6{Validación de Integridad A13}
+
+    V6 -->|Crítico| Error4[Bloquear Publicación]
+    V6 -->|Advertencia| Warn[Notificar Usuario]
+    V6 -->|Pasa| Output[Output Validado]
+
+    Warn --> Decision{Usuario Decide}
+    Decision -->|Continuar| Output
+    Decision -->|Corregir| Process
 
     Error1 --> Retry{¿Reintentar?}
     Error2 --> Retry
@@ -527,7 +560,18 @@ stateDiagram-v2
         Visuales --> [*]
     }
 
-    Enriquecimiento --> Integracion: Recursos listos
+    Enriquecimiento --> Verificacion: Recursos listos
+
+    state Verificacion {
+        [*] --> BuscarReferencias
+        BuscarReferencias --> ValidarIntegridad
+        ValidarIntegridad --> DetectarInconsistencias
+        DetectarInconsistencias --> GenerarReporteVerificacion
+        GenerarReporteVerificacion --> [*]
+    }
+
+    Verificacion --> Integracion: Verificación completa
+    Verificacion --> Produccion: Errores críticos
 
     state Integracion {
         [*] --> Compilar
@@ -562,6 +606,15 @@ Esta arquitectura proporciona:
 ✅ **Resiliencia**: Manejo robusto de errores con reintentos  
 ✅ **Observabilidad**: Métricas y logs en cada nivel  
 ✅ **Mantenibilidad**: Separación clara de responsabilidades  
-✅ **Extensibilidad**: Arquitectura abierta para futuras mejoras
+✅ **Extensibilidad**: Arquitectura abierta para futuras mejoras  
+✅ **Verificabilidad**: Sistema de integridad y referencias (A13)  
+✅ **Trazabilidad**: Detección de inconsistencias con alertas en tiempo real
 
 El sistema está diseñado siguiendo principios SOLID y patrones de diseño reconocidos, garantizando calidad y sostenibilidad a largo plazo.
+
+### Estado Actual del Proyecto
+
+**Sistema Multi-Agente**: 13 agentes especializados (A0-A13)  
+**Última Actualización**: Diciembre 2025  
+**Funcionalidad Destacada**: Verificación automática de integridad con sistema de alertas de 3 niveles (Crítico ❌, Advertencia ⚠️, Informativo ℹ️)  
+**Documentación**: Completa con diagramas de proceso, ejemplos y guías de implementación

@@ -169,7 +169,7 @@ Tu respuesta debe ser un **Reporte de Ejecución** que narre el proceso y presen
 
 ## EJEMPLO DE INTERACCIÓN
 
-**Usuario**: "Genera un curso de SOLID para Juniors"
+**Usuario**: "Genera un curso de SOLID para Principiantes"
 
 **Tú (Pensamiento interno)**:
 
