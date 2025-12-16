@@ -4,7 +4,14 @@
     "description": "Generador de cursos y PDFs para Teach Laoz",
     "main": "scripts/pdf/generate_pdf.js",
     "scripts": {
-        "generate-pdf": "node scripts/pdf/generate_pdf.js"
+        "generate-pdf": "node scripts/pdf/generate_pdf.js",
+        "api:start": "node api/server.js",
+        "api:dev": "cd api && npm run dev",
+        "api:init-db": "node api/database.js",
+        "migrate": "node scripts/migrate-logs.js",
+        "migrate:dry-run": "node scripts/migrate-logs.js --dry-run",
+        "cleanup": "node scripts/cleanup-old-logs.js",
+        "cleanup:dry-run": "node scripts/cleanup-old-logs.js --dry-run"
     },
     "dependencies": {
         "puppeteer": "^23.0.0",

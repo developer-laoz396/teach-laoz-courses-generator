@@ -82,7 +82,31 @@ WORKFLOW_PATH_VERIFICADOR_INTEGRIDAD="../../.agent/workflows/13-verificador-inte
 2. Llama al **Agente 12** para generar el `modulo_0/tema_x_glosario.md` por cada tema.
    - **Objetivo**: Crear un glosario jerárquico y explicativo que nivele a la audiencia antes de iniciar.
 
-### FASE 2: PRODUCCIÓN DE CONTENIDO (Iteración Granular)
+### FASE 2: PRODUCCIÓN DE CONTENIDO (Automatizada)
+
+**IMPORTANTE**: Para cursos con muchos subtemas (>20), usa el script de generación automática.
+
+#### Opción A: Generación Automática (Recomendado para cursos grandes)
+
+```bash
+node scripts/generate_course.js cursos/teach-laoz-curso-<nombre>
+```
+
+Este script:
+
+- Lee automáticamente el JSON del plan curricular
+- Genera los 4 archivos por subtema (contenido, ejercicios, guión, evaluación)
+- Registra progreso en la API de logging
+- Velocidad: ~2,000 archivos/minuto
+
+**Logging de progreso**:
+
+```javascript
+// El script automáticamente registra eventos
+node scripts/log_event.js "Generador-Automatico" "modulo_X" "Subtema completado" "success"
+```
+
+#### Opción B: Generación Manual (Para cursos pequeños o personalización)
 
 1. **Parseo del Plan**: Lee el bloque JSON al final del Plan Curricular.
 2. **Creación de Estructura**:
@@ -94,10 +118,54 @@ WORKFLOW_PATH_VERIFICADOR_INTEGRIDAD="../../.agent/workflows/13-verificador-inte
      - **Agente 7 (Guión)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_guion.md`.
      - **Agente 8 (Audio)**: Genera `media/modulo_X_tema_Y_subtema_Z.wav`.
      - **Agente 9 (Evaluación)**: Genera `modulos/modulo_X/tema_Y_subtema_Z_evaluacion.md`.
+   - **Registrar progreso**: Después de cada subtema:
+
+     ```bash
+     node scripts/log_event.js "Manager-Curso" "modulo_X" "Subtema X.Y.Z completado" "success"
+     ```
+
 4. **Calidad cognitiva**:
-   - Lee cada uno de los archivos geenrados y verifica la calidad cognitiva:
+   - Lee cada uno de los archivos generados y verifica la calidad cognitiva:
      - **Agente 11 (Optimización)**: Procesa el contenido, ejercicios, guión, evaluación generado en la primera parte de la fase 2 para aplicar mejoras cognitivas y analogías. Reemplaza el archivo original con la versión optimizada.
      - **Agente 12 (Preconceptos)**: Procesa el contenido, ejercicios, guión, evaluación generado en la primera parte de la fase 2 para generar o ampliar el `modulo_0/tema_x_preconceptos.md`.
+
+### HERRAMIENTAS DISPONIBLES
+
+#### 1. API de Logging
+
+**URL**: <http://localhost:3001> (debe estar corriendo con `npm run api:start`)
+
+**Uso en scripts**:
+
+```javascript
+const { execSync } = require('child_process');
+
+// Registrar evento
+execSync(`node scripts/log_event.js "Agente-X" "fase" "mensaje" "info|success|error"`);
+```
+
+**Endpoints útiles**:
+
+- `GET /api/sessions/current` - Obtener sesión activa
+- `POST /api/logs` - Registrar nuevo log
+- `GET /api/metrics/current` - Métricas en tiempo real
+
+#### 2. Script de Generación Automática
+
+**Ubicación**: `scripts/generate_course.js`
+
+**Requisitos**:
+
+- Plan curricular con bloque JSON al final
+- Estructura de directorios creada (`modulos/`, `media/`)
+
+**Personalización**:
+Modifica las funciones `generateContenido()`, `generateEjercicios()`, `generateGuion()`, `generateEvaluacion()` según necesidades específicas del curso.
+
+#### 3. Dashboards de Monitoreo
+
+- **Monitor en vivo**: <http://localhost:3001/reports/live-monitor.html>
+- **Reportes avanzados**: <http://localhost:3001/reports/reports-dashboard.html>
 
 ### FASE 3: ENRIQUECIMIENTO (Llamada a Agentes 4 y 6)
 
