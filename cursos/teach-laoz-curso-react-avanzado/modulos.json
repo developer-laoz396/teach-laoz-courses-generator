@@ -1,0 +1,58 @@
+[
+  {
+    "id": 0,
+    "title": "Fundamentos Sólidos y Nivelación",
+    "topics": [
+      { "id": "0.1", "title": "JavaScript Moderno para React" },
+      { "id": "0.2", "title": "TypeScript Esencial en React" },
+      { "id": "0.3", "title": "Arquitectura Interna de React" }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Deep Dive en Rendering y Reconciliación",
+    "topics": [
+      { "id": "1.1", "title": "Fase de Render vs Fase de Commit" },
+      { "id": "1.2", "title": "El Algoritmo de Reconciliación" },
+      { "id": "1.3", "title": "React Fiber Architecture" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Gestión de Estado Avanzada",
+    "topics": [
+      { "id": "2.1", "title": "Context Context API: Patrones de optimización" },
+      { "id": "2.2", "title": "State Machines con xState" },
+      { "id": "2.3", "title": "Server State Management" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Patrones de Diseño de Componentes",
+    "topics": [
+      { "id": "3.1", "title": "Compound Components Pattern" },
+      { "id": "3.2", "title": "Control Props Pattern" },
+      { "id": "3.3", "title": "Polymorphic Components con TypeScript" },
+      { "id": "3.4", "title": "Headless UI Components" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Performance y Optimización",
+    "topics": [
+      { "id": "4.1", "title": "Profiling en React" },
+      { "id": "4.2", "title": "Memoization Strategies" },
+      { "id": "4.3", "title": "Code Splitting y Lazy Loading" },
+      { "id": "4.4", "title": "Virtualización de listas" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Testing y Calidad",
+    "topics": [
+      { "id": "5.1", "title": "Pruebas de Integración con React Testing Library" },
+      { "id": "5.2", "title": "Testing de Custom Hooks complejos" },
+      { "id": "5.3", "title": "Mocking avanzado con MSW" }
+    ]
+  }
+]
